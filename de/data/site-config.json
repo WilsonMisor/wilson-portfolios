@@ -1,0 +1,20 @@
+{
+  "owner": {
+    "name": "Wilson Udomisor",
+    "title": "Data Engineer focused on reliable pipelines and clean analytics.",
+    "proofLine": "I build end-to-end data systems with Python, SQL, Airflow, dbt, and cloud tools."
+  },
+  "links": {
+    "githubProfile": "https://github.com/WilsonMisor/Data-Engineering",
+    "resume": "assets/docs/Wilson Udomisor (Data Engineering) resume.pdf",
+    "linkedin": "https://www.linkedin.com/in/wilsonudomisor",
+    "email": "wilsonudomisor@gmail.com",
+    "whatsappNumber": "2348037945101",
+    "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing"
+  },
+  "images": {
+    "homeHeroPhoto": "assets/img/user/wilson1.jpeg",
+    "aboutHeroPhoto": "assets/img/user/wilson2.jpg",
+    "headshot": "assets/img/user/wilson1.jpeg"
+  }
+}
