@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wilson Udomisor | Data Science Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-site="ds">
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="nav-logo">WU / DS</div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <p class="tagline" id="ownerName" data-edit-text-key="owner.name">Wilson Udomisor</p>
+            <h1 id="ownerTitle" data-edit-text-key="owner.title">Data Scientist translating messy data into measurable outcomes.</h1>
+            <p id="ownerProof" data-edit-text-key="owner.proofLine">I build reliable ML-ready datasets and ship models with clear monitoring.</p>
+            <div class="cta-row">
+              <a class="btn primary" href="projects.html">View Projects</a>
+              <a id="linkResume" class="btn secondary" data-link-path="links.resume" data-edit-link-key="links.resume" href="assets/docs/Wilson Udomisor (Data Engineering) resume.pdf">Download Resume</a>
+              <a id="linkGithubProfile" class="btn" data-link-path="links.githubProfile" data-edit-link-key="links.githubProfile" href="https://github.com/WilsonMisor/Data-Science" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+          <div id="heroHomeImage" class="photo-placeholder editable-image" data-edit-image-key="images.homeHeroPhoto">Add your headshot or brand visual</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Featured work</h2>
+        <p class="helper-line">A few case-study-ready builds. Edit data/projects.json to update.</p>
+        <div id="projectsFallback" class="helper-line"></div>
+        <div class="cards-grid featured" id="featuredProjects"></div>
+      </section>
+
+      <section class="section">
+        <div class="contact-strip" id="contact">
+          <h2>Contact</h2>
+          <p class="helper-line">Quick responses via your preferred channel.</p>
+          <div class="contact-buttons">
+            <a class="btn primary" data-edit-link-key="links.whatsappNumber" data-whatsapp-link href="https://wa.me/2348037945101" target="_blank" rel="noopener">WhatsApp</a>
+            <a id="linkEmail" class="btn secondary" data-link-path="links.email" data-mailto="true" data-edit-link-key="links.email" href="mailto:wilson.s.udomisor@gmail.com">Email</a>
+            <a id="linkLinkedIn" class="btn" data-link-path="links.linkedin" data-edit-link-key="links.linkedin" href="https://www.linkedin.com/in/wilson-udomisor" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div id="headshotImage" class="photo-placeholder editable-image" data-edit-image-key="images.headshot" style="max-width:180px; min-height:180px; margin-top:12px;">Headshot placeholder</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-top">
+        <div>
+          <h3>Contact</h3>
+          <p class="helper">Reach out for data science engagements or collaborations.</p>
+          <div class="contact-buttons">
+            <a class="btn primary" data-edit-link-key="links.whatsappNumber" data-whatsapp-link href="https://wa.me/2348037945101" target="_blank" rel="noopener">WhatsApp</a>
+            <a id="linkEmailFooter" class="btn secondary" data-link-path="links.email" data-mailto="true" data-edit-link-key="links.email" href="mailto:wilson.s.udomisor@gmail.com">Email</a>
+            <a id="linkLinkedInFooter" class="btn" data-link-path="links.linkedin" data-edit-link-key="links.linkedin" href="https://www.linkedin.com/in/wilson-udomisor" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <button id="editToggle" class="btn edit-toggle" type="button">Edit</button>
+        </div>
+        <p class="helper">© 2024 Wilson Udomisor. Crafted for clarity and reliability.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

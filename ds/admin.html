@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Data Engineering Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-site="ds" data-page="admin">
+  <div class="page">
+    <header>
+      <div class="container nav">
+        <div class="nav-logo">WU / DS Admin</div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container section">
+      <h1>Admin (client-side)</h1>
+      <p id="adminStatus" class="helper-line">Loading...</p>
+      <div class="card">
+        <p class="helper">All edits stay in localStorage for this browser. Export to move between browsers; commit real files to publish.</p>
+        <div class="admin-grid">
+          <label>Name<input id="adminName" type="text" /></label>
+          <label>Title<input id="adminTitle" type="text" /></label>
+          <label>Proof line<input id="adminProof" type="text" /></label>
+          <label>GitHub profile<input id="adminGithub" type="url" /></label>
+          <label>LinkedIn<input id="adminLinkedIn" type="url" /></label>
+          <label>Email<input id="adminEmail" type="email" /></label>
+          <label>WhatsApp number<input id="adminWhatsApp" type="text" /></label>
+          <label>Resume path<input id="adminResume" type="text" placeholder="assets/docs/resume.pdf" /></label>
+          <label>Home hero image path<input id="adminHeroHome" type="text" placeholder="assets/img/user/home-hero.jpg" /></label>
+          <label>About hero image path<input id="adminHeroAbout" type="text" placeholder="assets/img/user/about-hero.jpg" /></label>
+          <label>Headshot path<input id="adminHeadshot" type="text" placeholder="assets/img/user/headshot.jpg" /></label>
+        </div>
+        <div class="cta-row" style="margin-top:16px;">
+          <button id="adminSaveConfig" class="btn primary" type="button">Save config locally</button>
+          <button id="adminExport" class="btn secondary" type="button">Export overrides</button>
+          <button id="adminImport" class="btn" type="button">Import overrides</button>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2>Projects</h2>
+        <p class="helper-line">Edit fields then save override to localStorage.</p>
+        <div id="adminProjects" class="cards-grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-top">
+        <p class="helper">Client-only admin for GitHub Pages. Use Export to move overrides; replace files in assets/ to publish.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

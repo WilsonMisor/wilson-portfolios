@@ -1,0 +1,561 @@
+[
+  {
+    "id": "clean-health-pipeline",
+    "title": "Clean Health Data Pipeline",
+    "tagline": "Built a HIPAA-aware batch pipeline that cleans clinic events and surfaces trusted aggregates for analysts. Automated validation keeps downstream dashboards reliable.",
+    "problem": "Clinic data landed messy, duplicative, and late across sources.",
+    "impact": "Reduced analyst prep time by 60% and cut data freshness from daily to hourly.",
+    "category": "pipelines",
+    "roleType": "Solo",
+    "roleDetail": "Owned design through deployment across ingestion, modeling, orchestration, and QA.",
+    "team": "Partnered with an analytics lead for acceptance criteria.",
+    "timeline": "3 weeks",
+    "tools": ["Python", "SQL", "Airflow", "dbt"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/analytics-engineering",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "contextGoal": "Stabilize clinic data by enforcing schema contracts, deduplication, and quality checks so insights ship on time.",
+    "architecture": {
+      "diagram": "",
+      "note": "Layered zones: raw S3, validated parquet, modeled warehouse."
+    },
+    "whatIBuilt": [
+      "Incremental ingestion jobs that land raw Parquet partitions",
+      "dbt models that standardize clinic events and patient encounters",
+      "Airflow DAG orchestrating loads, tests, and warehouse refresh",
+      "Great Expectations style validations for freshness and duplicates",
+      "Lightweight monitoring with Slack alerts on SLA breaches"
+    ],
+    "challenges": [
+      "Normalizing semi-structured EMR payloads without losing provenance",
+      "Coordinating late-arriving facts while keeping dashboards fresh",
+      "Designing idempotent jobs that recover gracefully after failures"
+    ],
+    "outcomeDetails": [
+      "Dashboards update hourly with validated data, improving clinician trust.",
+      "Documented lineage and alerts reduced triage time from hours to minutes."
+    ],
+    "artifacts": [
+      {
+        "title": "Pipeline DAG Screenshot",
+        "type": "image",
+        "src": "",
+        "caption": "High-level view of the orchestrated ingestion and dbt runs."
+      },
+      {
+        "title": "Case Study Slides",
+        "type": "link",
+        "url": "https://www.canva.com",
+        "caption": "Walkthrough of design decisions and outcomes."
+      }
+    ]
+  },
+  {
+    "id": "near-real-time-orders",
+    "title": "Near Real-Time Orders Stream",
+    "tagline": "Delivered a streaming path for ecommerce orders to power minute-level metrics. Hardened with replayable checkpoints and schema enforcement.",
+    "problem": "Ops teams lacked timely visibility into order spikes and fulfillment issues.",
+    "impact": "Cut alert lag from 2 hours to under 5 minutes, improving response times.",
+    "category": "orchestration",
+    "roleType": "Solo",
+    "roleDetail": "Designed the end-to-end stream and productionized monitoring.",
+    "team": "Collaborated with SRE on Kafka scaling.",
+    "timeline": "4 weeks",
+    "tools": ["Python", "Kafka", "Flink", "SQL"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/realtime-fraud",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "contextGoal": "Keep order health visible in near-real-time for ops and finance teams.",
+    "architecture": {
+      "diagram": "",
+      "note": "Kafka topic ingestion to Flink jobs, landing curated views in warehouse."
+    },
+    "whatIBuilt": [
+      "Schema-registry backed producers with retry-safe delivery",
+      "Flink jobs with watermarking and late event handling",
+      "Compact warehouse tables for BI with 1-minute freshness",
+      "SLA dashboards and pager alerts for lag and dead letters",
+      "Replay tooling to reprocess windows safely"
+    ],
+    "challenges": [
+      "Handling late events while keeping aggregates stable",
+      "Balancing checkpoint frequency with processing cost",
+      "Designing replay paths without duplicating facts"
+    ],
+    "outcomeDetails": [
+      "Ops catches fulfillment errors minutes after they occur.",
+      "Finance gains confidence in intraday revenue tracking."
+    ],
+    "artifacts": [
+      {
+        "title": "Stream Topology",
+        "type": "image",
+        "src": "",
+        "caption": "Logical view of producers, processors, and sinks."
+      },
+      {
+        "title": "Pager Playbook",
+        "type": "link",
+        "url": "https://www.canva.com",
+        "caption": "Runbook for resolving lag and DLQ growth."
+      }
+    ]
+  },
+  {
+    "id": "analytics-engine-room",
+    "title": "Analytics Engine Room",
+    "tagline": "Centralized curated marts and KPI definitions with dbt and tests. Improved analyst autonomy with documented models.",
+    "problem": "Metrics drifted across teams with conflicting definitions.",
+    "impact": "Unified KPIs cut reporting disputes and sped up analysis.",
+    "category": "analytics",
+    "roleType": "Team",
+    "roleDetail": "Led modeling standards and CI for a three-person team.",
+    "team": "Worked with two analytics engineers.",
+    "timeline": "6 weeks",
+    "tools": ["dbt", "SQL", "BigQuery", "Great Expectations"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/retail-demand",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "contextGoal": "Provide consistent KPI layers and documentation for analysts.",
+    "architecture": {
+      "diagram": "",
+      "note": "Raw to staging to marts with contracts and exposures."
+    },
+    "whatIBuilt": [
+      "dbt project with contract-enforced staging models",
+      "Source freshness checks and schema tests in CI",
+      "Semantic layer for core KPIs with ownership docs",
+      "Data dictionary site auto-built from docs",
+      "Cost-aware partitioning and clustering choices"
+    ],
+    "challenges": [
+      "Standardizing naming across legacy sources",
+      "Preventing breaking changes with contracts",
+      "Balancing model depth with run time constraints"
+    ],
+    "outcomeDetails": [
+      "Analysts ship dashboards faster with trusted KPIs.",
+      "Reduced breakages by catching schema drift early."
+    ],
+    "artifacts": [
+      {
+        "title": "Model DAG",
+        "type": "image",
+        "src": "",
+        "caption": "Graph of staging to marts with tests highlighted."
+      },
+      {
+        "title": "Docs Site",
+        "type": "link",
+        "url": "https://www.canva.com",
+        "caption": "Documentation snapshot for KPIs and sources."
+      }
+    ]
+  },
+  {
+    "id": "governed-dimension-library",
+    "title": "Governed Dimension Library",
+    "tagline": "Created reusable conformed dimensions with SCD handling and data contracts. Enabled consistent joins across domains.",
+    "problem": "Teams repeatedly rebuilt customer and product dimensions differently.",
+    "impact": "Lowered duplication and improved join accuracy across reports.",
+    "category": "data-modelling",
+    "roleType": "Solo",
+    "roleDetail": "Designed SCD strategies and published shared models.",
+    "team": "Partnered with domain stewards for definitions.",
+    "timeline": "5 weeks",
+    "tools": ["SQL", "dbt", "Airbyte", "Snowflake"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/analytics-engineering",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": false,
+    "contextGoal": "Provide governed dimensions with lineage and ownership.",
+    "architecture": {
+      "diagram": "",
+      "note": "Source extraction, conformance layer, published marts."
+    },
+    "whatIBuilt": [
+      "Reusable dimension macros for SCD2 and type-1 updates",
+      "Data contracts and acceptance tests for shared dimensions",
+      "Ownership docs with data stewards per dimension",
+      "Load performance tuning with incremental filters",
+      "Backfill process with validation gates"
+    ],
+    "challenges": [
+      "Aligning naming conventions across teams",
+      "Balancing history retention with warehouse cost",
+      "Keeping change logs transparent"
+    ],
+    "outcomeDetails": [
+      "Standardized dimensions boosted dashboard accuracy.",
+      "Contracts reduced breaking changes and rework."
+    ],
+    "artifacts": [
+      {
+        "title": "Dimension Contract",
+        "type": "image",
+        "src": "",
+        "caption": "Sample contract and owners."
+      },
+      {
+        "title": "Change Log",
+        "type": "link",
+        "url": "https://www.canva.com",
+        "caption": "Versioned changes with approvals."
+      }
+    ]
+  },
+  {
+    "id": "serving-analytics-dashboards",
+    "title": "Serving Analytics Dashboards",
+    "tagline": "Built a curated metrics layer feeding operational dashboards with governed access. Added observability for adoption.",
+    "problem": "Stakeholders lacked a consistent operational dashboard experience.",
+    "impact": "Improved visibility into service health and reduced ad-hoc reporting.",
+    "category": "visualization",
+    "roleType": "Team",
+    "roleDetail": "Drove data sourcing and quality while a teammate owned UX.",
+    "team": "Worked with a product analyst and designer.",
+    "timeline": "4 weeks",
+    "tools": ["Looker", "SQL", "Fivetran", "dbt"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/retail-demand",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": false,
+    "contextGoal": "Deliver reliable dashboards with governed access and adoption tracking.",
+    "architecture": {
+      "diagram": "",
+      "note": "ELT into marts powering dashboard tiles."
+    },
+    "whatIBuilt": [
+      "Source ingestion and staging models for service telemetry",
+      "Modeled metrics layer aligned to product teams",
+      "Row-level access controls for sensitive views",
+      "Usage monitoring to track dashboard adoption",
+      "Incident runbooks for stale tiles"
+    ],
+    "challenges": [
+      "Balancing access control with self-service",
+      "Maintaining freshness while limiting costs",
+      "Coordinating changes across model owners"
+    ],
+    "outcomeDetails": [
+      "Consistent dashboards improved decision speed.",
+      "Governance reduced confusion on metric owners."
+    ],
+    "artifacts": [
+      {
+        "title": "Dashboard Preview",
+        "type": "image",
+        "src": "",
+        "caption": "Example tile layout with filters."
+      },
+      {
+        "title": "Adoption Metrics",
+        "type": "link",
+        "url": "https://www.canva.com",
+        "caption": "Tracking usage and freshness SLAs."
+      }
+    ]
+  },
+  {
+    "id": "batch-medallion",
+    "title": "Batch Medallion Layers",
+    "tagline": "Built bronze-silver-gold medallion layers with contracts and incremental loads.",
+    "problem": "Raw data changes caused downstream breakages across consumers.",
+    "impact": "Stabilized data products and reduced reprocessing time.",
+    "category": "pipelines",
+    "roleType": "Solo",
+    "roleDetail": "Designed and implemented medallion layers and monitoring.",
+    "team": "Collaborated with analytics for acceptance.",
+    "timeline": "5 weeks",
+    "tools": ["Python", "SQL", "Airflow", "dbt"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/analytics-engineering",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": false,
+    "contextGoal": "Deliver resilient medallion layers for governed consumption.",
+    "architecture": {
+      "diagram": "",
+      "note": "Bronze to gold with contracts and quality gates."
+    },
+    "whatIBuilt": [
+      "Ingestion to bronze with schema registry",
+      "Contracts and tests at silver",
+      "Curated marts in gold with exposures",
+      "Airflow DAG orchestration with SLAs",
+      "Monitoring and alerting for drift"
+    ],
+    "challenges": [
+      "Managing schema drift without downtime",
+      "Optimizing incremental performance",
+      "Keeping lineage transparent"
+    ],
+    "outcomeDetails": [
+      "Stable consumer-facing tables with reduced incidents.",
+      "Faster onboarding for analysts with documented layers."
+    ],
+    "artifacts": [
+      {
+        "title": "Layer Diagram",
+        "type": "image",
+        "src": "",
+        "caption": "Bronze to gold pipeline view."
+      }
+    ]
+  },
+  {
+    "id": "platform",
+    "title": "Data Platform Foundations",
+    "tagline": "Rolled out core platform components—ingestion, modeling, and observability—on cloud infrastructure.",
+    "problem": "Teams lacked shared patterns for new data products.",
+    "impact": "Accelerated project delivery and reduced duplicate tooling.",
+    "category": "other",
+    "roleType": "Team",
+    "roleDetail": "Led platform enablement and standards.",
+    "team": "Worked with platform and analytics engineers.",
+    "timeline": "8 weeks",
+    "tools": ["Terraform", "Airflow", "dbt", "Snowflake"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/platform",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": false,
+    "contextGoal": "Provide reusable platform components for data teams.",
+    "architecture": {
+      "diagram": "",
+      "note": "Infra as code, orchestrated ELT, centralized monitoring."
+    },
+    "whatIBuilt": [
+      "Base Airflow environment with connections and secrets",
+      "dbt project template with CI checks",
+      "Observability stack for freshness and volume",
+      "Terraform modules for data infra",
+      "Runbooks for onboarding new pipelines"
+    ],
+    "challenges": [
+      "Standardizing patterns across teams",
+      "Balancing governance and agility",
+      "Rolling out changes without disrupting workloads"
+    ],
+    "outcomeDetails": [
+      "Faster time-to-first-pipeline for new teams.",
+      "Reduced tooling sprawl with agreed standards."
+    ],
+    "artifacts": [
+      {
+        "title": "Platform Diagram",
+        "type": "image",
+        "src": "",
+        "caption": "Core platform components."
+      }
+    ]
+  },
+  {
+    "id": "realtime-risk",
+    "title": "Realtime Risk Stream",
+    "tagline": "Implemented streaming risk scoring with replayable pipelines and strict schemas.",
+    "problem": "Risk signals arrived late and inconsistently.",
+    "impact": "Enabled near-real-time responses and fewer false positives.",
+    "category": "orchestration",
+    "roleType": "Solo",
+    "roleDetail": "Built stream processing, contracts, and monitoring.",
+    "team": "Partnered with risk ops for tuning.",
+    "timeline": "6 weeks",
+    "tools": ["Kafka", "Flink", "Python", "SQL"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/realtime-fraud",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": false,
+    "contextGoal": "Deliver trustworthy real-time risk scores with resilience.",
+    "architecture": {
+      "diagram": "",
+      "note": "Event stream with contracts and replay tooling."
+    },
+    "whatIBuilt": [
+      "Schema-enforced Kafka topics",
+      "Flink jobs with replay and watermarking",
+      "Warehouse sinks for BI aggregation",
+      "Monitoring for lag and dead letters",
+      "Runbooks for incident response"
+    ],
+    "challenges": [
+      "Handling late and malformed events",
+      "Keeping SLAs while containing costs",
+      "Designing safe replay without duplicates"
+    ],
+    "outcomeDetails": [
+      "Risk scores refresh in near real time.",
+      "Operational runbooks reduce triage time."
+    ],
+    "artifacts": [
+      {
+        "title": "Stream Graph",
+        "type": "image",
+        "src": "",
+        "caption": "High-level stream flow."
+      }
+    ]
+  }
+,
+  {
+    "id": "analytics-engineering",
+    "title": "Analytics Engineering Suite",
+    "tagline": "Built curated marts, semantic layers, and tests to keep analytics models production-ready.",
+    "problem": "Analysts faced inconsistent metrics across teams.",
+    "impact": "Unified KPIs and reduced dashboard breakages.",
+    "category": "analytics",
+    "roleType": "Team",
+    "roleDetail": "Led modeling standards and CI/CD for analytics.",
+    "team": "Worked with analytics engineers and BI.",
+    "timeline": "6 weeks",
+    "tools": ["dbt", "SQL", "BigQuery", "Great Expectations"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/analytics-engineering",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "contextGoal": "Deliver trusted KPIs with documentation and tests.",
+    "architecture": {
+      "diagram": "",
+      "note": "Layered staging to marts with contracts."
+    },
+    "whatIBuilt": [
+      "Contracted staging models with schema tests",
+      "Semantic layer for shared KPIs",
+      "CI checks for docs and exposures",
+      "Freshness alerts and anomaly detection",
+      "Usage reporting for dashboard adoption"
+    ],
+    "challenges": [
+      "Standardizing naming across sources",
+      "Balancing model depth with runtime",
+      "Catching schema drift early"
+    ],
+    "outcomeDetails": [
+      "Reduced KPI disputes and faster dashboard releases.",
+      "Higher trust in data with automated checks."
+    ],
+    "artifacts": [
+      {
+        "title": "Model DAG",
+        "type": "image",
+        "src": "",
+        "caption": "dbt graph of staging to marts."
+      }
+    ]
+  },
+  {
+    "id": "realtime-fraud",
+    "title": "Realtime Fraud Detection",
+    "tagline": "Implemented streaming feature pipelines feeding real-time fraud scoring.",
+    "problem": "Fraud signals arrived too late to block risky transactions.",
+    "impact": "Cut fraud losses by reacting within seconds.",
+    "category": "orchestration",
+    "roleType": "Solo",
+    "roleDetail": "Owned streaming data prep and model serving hooks.",
+    "team": "Paired with data scientists for feature selection.",
+    "timeline": "5 weeks",
+    "tools": ["Kafka", "Flink", "Python", "SQL"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/realtime-fraud",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "contextGoal": "Deliver reliable real-time features and scoring signals.",
+    "architecture": {
+      "diagram": "",
+      "note": "Event stream feeding feature store and scoring endpoints."
+    },
+    "whatIBuilt": [
+      "Schema-enforced Kafka topics for transactions",
+      "Flink jobs computing real-time features",
+      "Feature store sync for online/offline parity",
+      "Lag and anomaly monitoring",
+      "Replay tooling for backfills"
+    ],
+    "challenges": [
+      "Handling late/malformed events safely",
+      "Keeping feature freshness SLAs",
+      "Avoiding double counting on replay"
+    ],
+    "outcomeDetails": [
+      "Reduced fraud response time to seconds.",
+      "Improved model stability with consistent features."
+    ],
+    "artifacts": [
+      {
+        "title": "Stream Topology",
+        "type": "image",
+        "src": "",
+        "caption": "Producers, processors, and sinks layout."
+      }
+    ]
+  },
+  {
+    "id": "retail-demand",
+    "title": "Retail Demand Forecasting",
+    "tagline": "Developed curated datasets and pipelines feeding demand forecasting models.",
+    "problem": "Merchandising decisions lacked reliable demand signals.",
+    "impact": "Improved stock allocation and reduced stockouts.",
+    "category": "analytics",
+    "roleType": "Team",
+    "roleDetail": "Built data prep and validation for forecasting models.",
+    "team": "Partnered with data scientists and planners.",
+    "timeline": "7 weeks",
+    "tools": ["Python", "SQL", "Airflow", "dbt"],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/retail-demand",
+      "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": false,
+    "contextGoal": "Provide clean, reliable inputs to forecasting models.",
+    "architecture": {
+      "diagram": "",
+      "note": "Batch prep to training sets and feature store sync."
+    },
+    "whatIBuilt": [
+      "Data cleaning and joining across sales and inventory",
+      "Feature engineering pipelines",
+      "Validation for leakage and anomalies",
+      "Model-ready dataset exports",
+      "Monitoring for freshness and drift"
+    ],
+    "challenges": [
+      "Managing sparse data across stores",
+      "Preventing label leakage",
+      "Balancing feature richness with performance"
+    ],
+    "outcomeDetails": [
+      "Better demand signals improved allocation decisions.",
+      "Model performance stabilized with clean inputs."
+    ],
+    "artifacts": [
+      {
+        "title": "Feature Flow",
+        "type": "image",
+        "src": "",
+        "caption": "From raw data to model-ready sets."
+      }
+    ]
+  }
+]
