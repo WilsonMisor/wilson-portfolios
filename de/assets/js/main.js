@@ -366,8 +366,8 @@ function setupEditableText() {
 /* -------- Global bindings ---------- */
 function bindGlobalContent() {
   setTextFromConfig("ownerName", "owner.name", "Wilson Udomisor");
-  setTextFromConfig("ownerTitle", "owner.title", "Data Engineer focused on reliable pipelines and clean analytics.");
-  setTextFromConfig("ownerProof", "owner.proofLine", "I build end-to-end data systems with Python, SQL, Airflow, dbt, and cloud tools.");
+  setTextFromConfig("ownerTitle", "owner.title", "Data Engineering that turns messy data into trusted decisions.");
+  setTextFromConfig("ownerProof", "owner.proofLine", "I am Wilson Udomisor, a hands on data engineer who builds reliable batch and real time systems with Spark, Airflow, Kafka, dbt, and Postgres. This Data Engineering portfolio showcases a platform in a repo, a medallion batch pipeline, and a streaming risk pipeline. Each project includes Docker Compose demos, diagrams, and clear READMEs that show how I design, orchestrate, transform, and validate data end to end.");
 
   applyLinkBindings();
   setWhatsAppLink();
