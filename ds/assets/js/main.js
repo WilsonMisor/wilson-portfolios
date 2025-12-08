@@ -366,8 +366,8 @@ function setupEditableText() {
 /* -------- Global bindings ---------- */
 function bindGlobalContent() {
   setTextFromConfig("ownerName", "owner.name", "Wilson Udomisor");
-  setTextFromConfig("ownerTitle", "owner.title", "Data Engineering that turns messy data into trusted decisions.");
-  setTextFromConfig("ownerProof", "owner.proofLine", "I am Wilson Udomisor, a hands on data engineer who builds reliable batch and real time systems with Spark, Airflow, Kafka, dbt, and Postgres. This Data Engineering portfolio showcases a platform in a repo, a medallion batch pipeline, and a streaming risk pipeline. Each project includes Docker Compose demos, diagrams, and clear READMEs that show how I design, orchestrate, transform, and validate data end to end.");
+  setTextFromConfig("ownerTitle", "owner.title", "Data science that turns messy data into clear insight and confident action");
+  setTextFromConfig("ownerProof", "owner.proofLine", "You want answers you can trust, not buzzwords. I am Wilson Udomisor, a data science practitioner who builds simple, reliable pipelines from raw data to real decisions. In this portfolio you will see practical work with Python, SQL, Pandas, Scikit learn, Power BI and cloud data tools, all focused on one thing only helping you understand what is happening, why it is happening, and what you should do next.");
 
   applyLinkBindings();
   setWhatsAppLink();
