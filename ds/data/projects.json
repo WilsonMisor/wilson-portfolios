@@ -23,7 +23,7 @@
       "Power BI or Tableau"
     ],
     "links": {
-      "github": "[Add GitHub link to project-1-retail-demand folder]",
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/retail-demand",
       "drive": "[Add]",
       "canva": "[Add]"
     },
@@ -89,7 +89,7 @@
       "Docker"
     ],
     "links": {
-      "github": "[Add GitHub link to project-2-realtime-fraud folder]",
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/realtime-fraud",
       "drive": "[Add]",
       "canva": "[Add]"
     },
@@ -154,7 +154,7 @@
       "Power BI or Tableau"
     ],
     "links": {
-      "github": "[Add GitHub link to project-3-analytics-engineering folder]",
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/analytics-engineering",
       "drive": "[Add]",
       "canva": "[Add]"
     },
@@ -198,3 +198,4 @@
     ]
   }
 ]
+
