@@ -1,8 +1,8 @@
 {
   "owner": {
     "name": "Wilson Udomisor",
-    "title": "Data Engineer focused on reliable pipelines and clean analytics.",
-    "proofLine": "I build end-to-end data systems with Python, SQL, Airflow, dbt, and cloud tools."
+    "title": "Data Engineering that turns messy data into trusted decisions.",
+    "proofLine": "I am Wilson Udomisor, a hands on data engineer who builds reliable batch and real time systems with Spark, Airflow, Kafka, dbt, and Postgres. This Data Engineering portfolio showcases a platform in a repo, a medallion batch pipeline, and a streaming risk pipeline. Each project includes Docker Compose demos, diagrams, and clear READMEs that show how I design, orchestrate, transform, and validate data end to end."
   },
   "links": {
     "githubProfile": "https://github.com/WilsonMisor/Data-Engineering",
