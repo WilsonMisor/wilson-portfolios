@@ -638,3 +638,14 @@ function fillList(id, items) {
   if (!el || !items) return;
   el.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
 }
+
+function attachCardLinkHandlers(container) {
+  container.querySelectorAll("[data-project-link]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const projectId = btn.dataset.projectLink;
+      const targetPage = `project-${projectId}.html`;
+      window.location.href = targetPage;
+    });
+  });
+}

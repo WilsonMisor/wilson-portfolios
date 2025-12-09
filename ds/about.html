@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Wilson Udomisor - Data science practitioner specializing in batch analytics, streaming pipelines, analytics engineering, and explainable machine learning.">
   <title>About | Wilson Udomisor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-site="ds">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <div class="page">
     <header>
       <div class="container nav">
@@ -23,65 +25,52 @@
       </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="main-content">
       <section class="hero">
-        <div id="heroAboutImage" class="photo-placeholder editable-image" data-edit-image-key="images.aboutHeroPhoto">Wide hero banner or centered portrait</div>
+        <div id="heroAboutImage" class="photo-placeholder editable-image" data-edit-image-key="images.aboutHeroPhoto" role="img" aria-label="Wilson Udomisor about page hero image">Wide hero banner or centered portrait</div>
       </section>
 
       <section class="section">
         <h1 id="ownerName">About</h1>
         <div class="card">
           <p>I am Wilson Udomisor, and I use data science to answer very practical questions. How is performance trending. Which actions really move the needle. Where are the hidden risks and opportunities in your data. My goal is to bring structure and clarity to messy information so that your next move feels obvious and well supported.</p>
-          <p>I work across the full data science lifecycle. I explore raw data, clean it, and model it with Python, SQL and Pandas. I use Scikit learn to build straightforward models that are transparent and easy to explain. I design tables and transformations so that dashboards in Power BI or other tools show exactly the metrics you care about, with no confusion about how the numbers were created.</p>
+          <p>I work across the full data science lifecycle. I explore raw data, clean it, and model it with Python, SQL, and Pandas. I use Scikit-learn to build straightforward models that are transparent and easy to explain. I design tables and transformations so that dashboards in Power BI or other tools show exactly the metrics you care about, with no confusion about how the numbers were created.</p>
           <p>This portfolio focuses on real world style projects, not toy examples. You will see batch analytics that track demand and revenue over time, streaming style simulation that reacts as events arrive, and analytics engineering work that builds clean and tested layers on top of warehouses. In each project I explain the problem, the choices I made, the trade offs, and what the results mean for you.</p>
           <p>I enjoy breaking complex ideas into simple pieces that non technical stakeholders can follow. That means clear documentation, readable code, and a strong story for every chart and table. If you are looking for someone who can sit between business and technology, ask the right questions, and then turn those questions into working data science solutions, this portfolio is my invitation to you.</p>
         </div>
       </section>
 
       <section class="section">
-        <h2>Work experience</h2>
-        <div class="timeline">
-          <div class="card timeline-item">
-            <h3>Senior Data Engineer</h3>
-            <div class="meta">
-              <span>Northwind Labs</span>
-              <span>2022 — Present</span>
-            </div>
-            <ul class="list">
-              <li>Implemented Airflow-driven ELT with contracts that cut breakages by 40%.</li>
-              <li>Launched KPI marts with dbt docs, reducing analyst onboarding time.</li>
-              <li>Built observability dashboards to track freshness, volume, and schema drift.</li>
-            </ul>
-            <p class="helper">Stack: Python, Airflow, dbt, Snowflake, Great Expectations</p>
+        <h2>Technical Skills</h2>
+        <div class="snapshot-grid">
+          <div class="small-card">
+            <strong>Programming & Data Processing</strong>
+            <p class="helper">Python, SQL, Pandas, Scikit-learn, PySpark</p>
           </div>
+          <div class="small-card">
+            <strong>Data Engineering & Orchestration</strong>
+            <p class="helper">Airflow, dbt, Docker, Spark, ETL/ELT pipelines</p>
+          </div>
+          <div class="small-card">
+            <strong>Databases & Storage</strong>
+            <p class="helper">PostgreSQL, BigQuery, Snowflake, SQL Server</p>
+          </div>
+          <div class="small-card">
+            <strong>Analytics & Visualization</strong>
+            <p class="helper">Power BI, Tableau, statistical modeling, forecasting</p>
+          </div>
+        </div>
+      </section>
 
-          <div class="card timeline-item">
-            <h3>Data Engineer</h3>
-            <div class="meta">
-              <span>Atlas Health</span>
-              <span>2020 — 2022</span>
-            </div>
-            <ul class="list">
-              <li>Stabilized clinical data ingestion with retryable jobs and SLA alerts.</li>
-              <li>Modeled patient and encounter dimensions with reproducible tests.</li>
-              <li>Partnered with analysts to ship governed dashboards for operations.</li>
-            </ul>
-            <p class="helper">Stack: Python, SQL, Airbyte, dbt, BigQuery</p>
-          </div>
-
-          <div class="card timeline-item">
-            <h3>Analytics Engineer</h3>
-            <div class="meta">
-              <span>Commerce Hub</span>
-              <span>2018 — 2020</span>
-            </div>
-            <ul class="list">
-              <li>Maintained KPI definitions and semantic layers for growth analytics.</li>
-              <li>Automated data quality checks to flag anomalies before stakeholder reviews.</li>
-              <li>Documented lineage to speed up debugging and onboarding.</li>
-            </ul>
-            <p class="helper">Stack: SQL, dbt, Looker, Fivetran</p>
-          </div>
+      <section class="section">
+        <h2>Project Focus Areas</h2>
+        <div class="card">
+          <ul class="list">
+            <li><strong>Batch Analytics Pipelines:</strong> End-to-end data pipelines from raw ingestion to business intelligence, using Python, Spark, dbt, and warehouse modeling.</li>
+            <li><strong>Streaming & Real-Time Data:</strong> Event-driven architectures for fraud detection and risk monitoring with Spark Structured Streaming and rolling feature windows.</li>
+            <li><strong>Analytics Engineering:</strong> Building clean semantic layers with dbt, implementing data quality tests, and creating self-service BI marts for stakeholders.</li>
+            <li><strong>Machine Learning for Business:</strong> Transparent, explainable models for demand forecasting, risk scoring, and pattern detection using Scikit-learn.</li>
+          </ul>
         </div>
       </section>
 

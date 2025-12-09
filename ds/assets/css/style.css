@@ -458,6 +458,23 @@ body.edit-mode [data-edit-text-key] {
   outline-offset: 4px;
 }
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent);
+  color: #0f172a;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  z-index: 100;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 @media (min-width: 720px) {
   .hero-grid {
     grid-template-columns: 1.1fr 0.9fr;

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" data-project-id="clean-health-pipeline">
+<html lang="en" data-project-id="modern-analytics-engineering-showcase">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clean Health Data Pipeline | Case Study</title>
+  <title>Modern Analytics Engineering Showcase | Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-site="ds">
-  <div class="page" data-project-id="clean-health-pipeline">
+  <div class="page" data-project-id="modern-analytics-engineering-showcase">
     <header>
       <div class="container nav">
         <div class="nav-logo">WU / DS</div>
@@ -26,8 +26,8 @@
     <main class="container">
       <section class="section">
         <p class="tagline">Case Study</p>
-        <h1 id="projectTitle">Clean Health Data Pipeline</h1>
-        <p class="helper-line" id="contextGoal">Stabilize clinic data by enforcing schema contracts, deduplication, and quality checks so insights ship on time.</p>
+        <h1 id="projectTitle">Modern Analytics Engineering Showcase</h1>
+        <p class="helper-line" id="contextGoal">Loading project data...</p>
       </section>
 
       <section class="section project-snapshot">
@@ -36,66 +36,59 @@
           <div class="snapshot-grid">
             <div class="small-card">
               <strong>Problem</strong>
-              <p id="snapshotProblem">Clinic data landed messy, duplicative, and late across sources.</p>
+              <p id="snapshotProblem">Loading...</p>
             </div>
             <div class="small-card">
               <strong>Your role</strong>
-              <p id="snapshotRole">Solo — Owned design through deployment across ingestion, modeling, and QA.</p>
+              <p id="snapshotRole">Loading...</p>
             </div>
             <div class="small-card">
               <strong>Stack</strong>
-              <p id="snapshotStack">Python, SQL, Airflow, dbt</p>
+              <p id="snapshotStack">Loading...</p>
             </div>
             <div class="small-card">
               <strong>Timeline</strong>
-              <p id="snapshotTimeline">3 weeks</p>
+              <p id="snapshotTimeline">Loading...</p>
             </div>
           </div>
           <div class="card" style="margin-top: var(--space-3);">
             <div class="card-actions">
-              <a id="linkGithub" data-edit-link-key="project_clean-health-pipeline_github" class="btn primary" href="https://github.com/USERNAME/clean-health-pipeline" target="_blank" rel="noopener">GitHub</a>
-              <a id="linkDrive" data-edit-link-key="project_clean-health-pipeline_drive" class="btn secondary" href="https://drive.google.com/..." target="_blank" rel="noopener">Drive</a>
-              <a id="linkCanva" data-edit-link-key="project_clean-health-pipeline_canva" class="btn" href="https://www.canva.com/..." target="_blank" rel="noopener">Canva</a>
+              <a id="linkGithub" data-edit-link-key="project_modern-analytics-engineering-showcase_github" class="btn primary" href="https://github.com/WilsonMisor/Data-Science/tree/main/analytics-engineering" target="_blank" rel="noopener">GitHub</a>
+              <a id="linkDrive" data-edit-link-key="project_modern-analytics-engineering-showcase_drive" class="btn secondary" href="#" title="Add Drive link via Edit Mode or Admin">Drive</a>
+              <a id="linkCanva" data-edit-link-key="project_modern-analytics-engineering-showcase_canva" class="btn" href="#" title="Add Canva link via Edit Mode or Admin">Canva</a>
             </div>
           </div>
         </div>
         <div id="architectureBox" class="card">
           <h3>Architecture / flow</h3>
-          <div class="diagram-placeholder editable-image" data-edit-image-key="project_clean-health-pipeline_architecture">Architecture diagram placeholder</div>
-          <p class="helper">Layered zones: raw S3, validated parquet, modeled warehouse.</p>
+          <div class="diagram-placeholder editable-image" data-edit-image-key="project_modern-analytics-engineering-showcase_architecture">Architecture diagram placeholder</div>
+          <p class="helper">Raw CSVs are loaded into Postgres with Python, then dbt builds layered models (staging, intermediate, marts) that power BI dashboards and self-service queries.</p>
         </div>
       </section>
 
       <section class="section">
         <h2>Context & goal</h2>
-        <p id="contextGoalBody">Stabilize clinic data by enforcing schema contracts, deduplication, and quality checks so insights ship on time.</p>
+        <p id="contextGoalBody">Loading...</p>
       </section>
 
       <section class="section">
         <h2>What you built</h2>
         <ul class="list" id="whatBuiltList">
-          <li>Incremental ingestion jobs that land raw Parquet partitions</li>
-          <li>dbt models that standardize clinic events and patient encounters</li>
-          <li>Airflow DAG orchestrating loads, tests, and warehouse refresh</li>
-          <li>Great Expectations style validations for freshness and duplicates</li>
-          <li>Lightweight monitoring with Slack alerts on SLA breaches</li>
+          <li>Loading...</li>
         </ul>
       </section>
 
       <section class="section">
         <h2>Challenges & trade-offs</h2>
         <ul class="list" id="challengesList">
-          <li>Normalizing semi-structured EMR payloads without losing provenance</li>
-          <li>Coordinating late-arriving facts while keeping dashboards fresh</li>
-          <li>Designing idempotent jobs that recover gracefully after failures</li>
+          <li>Loading...</li>
         </ul>
       </section>
 
       <section class="section">
         <h2>Outcome</h2>
         <ul class="list" id="outcomeList">
-          <li>Dashboards update hourly with validated data, improving clinician trust.</li>
-          <li>Documented lineage and alerts reduced triage time from hours to minutes.</li>
+          <li>Loading...</li>
         </ul>
       </section>
 
@@ -103,22 +96,22 @@
         <h2>Artifacts gallery</h2>
         <div class="gallery" id="artifactsGallery">
           <div class="artifact">
-            <div class="meta">Pipeline DAG Screenshot</div>
-            <div class="artifact-placeholder editable-image" data-edit-image-key="project_clean-health-pipeline_artifact_0">Image placeholder</div>
-            <p class="helper">High-level view of the orchestrated ingestion and dbt runs.</p>
+            <div class="meta">dbt Model DAG Screenshot</div>
+            <div class="artifact-placeholder editable-image" data-edit-image-key="project_modern-analytics-engineering-showcase_artifact_0">Image placeholder</div>
+            <p class="helper">Graph of staging, intermediate, and mart models for the project.</p>
           </div>
           <div class="artifact">
-            <div class="meta">Case Study Slides</div>
-            <p class="helper">Walkthrough of design decisions and outcomes.</p>
-            <a class="btn secondary" data-edit-link-key="project_clean-health-pipeline_artifact_1" href="https://www.canva.com/..." target="_blank" rel="noopener">Open artifact</a>
+            <div class="meta">BI Mock Dashboard</div>
+            <div class="artifact-placeholder editable-image" data-edit-image-key="project_modern-analytics-engineering-showcase_artifact_1">Image placeholder</div>
+            <p class="helper">Example combined view of sales, marketing, and support metrics.</p>
           </div>
         </div>
       </section>
 
       <section class="section">
         <div class="pagination">
-          <a class="btn secondary" href="project-template.html">Previous project</a>
-          <a class="btn secondary" href="project-template.html">Next project</a>
+          <a class="btn secondary" href="project-realtime-fraud-risk-signal-pipeline.html">Previous project</a>
+          <a class="btn secondary" href="project-retail-demand-revenue-intelligence.html">Next project</a>
           <a class="btn primary" href="projects.html">Back to all projects</a>
         </div>
       </section>

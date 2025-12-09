@@ -3,10 +3,11 @@
 Static, multi-page portfolio for Wilson Udomisor showcasing data science case studies. Built with plain HTML, CSS, and JavaScript; project data is driven from `data/projects.json`.
 
 ## Run locally
-1. Open a terminal in `C:\Users\USER\Documents\my-de-portfolio-website`.
+1. Open a terminal in the repository root directory (the `ds` folder).
 2. Start a simple server so `fetch` can read JSON:
-   - PowerShell: `python -m http.server 8000`
-3. Visit `http://localhost:8000/index.html`.
+   - PowerShell or Command Prompt: `python -m http.server 8000`
+   - Alternative: `python3 -m http.server 8000`
+3. Visit `http://localhost:8000/index.html` in your browser.
 
 You can also open `index.html` directly, but browsers may block JSON fetches; use the local server for full functionality.
 
