@@ -114,16 +114,20 @@ function renderSingleProject(projects) {
 
   const archBox = document.getElementById("architectureBox");
   if (archBox) {
+    const archSection = archBox.querySelector("h3") ? archBox.querySelector("h3").parentElement : archBox;
     if (project.architecture && project.architecture.diagram) {
-      archBox.innerHTML = `<img src="${project.architecture.diagram}" alt="Architecture diagram for ${project.title}">`;
-    } else {
-      archBox.innerHTML = `<div class="diagram-placeholder editable-image" data-edit-image-key="project_${project.id}_architecture">Architecture diagram placeholder</div>`;
+      const existingContent = archSection.querySelector("h3");
+      archSection.innerHTML = existingContent ? `<h3>${existingContent.textContent}</h3>` : "";
+      const img = document.createElement("img");
+      img.src = project.architecture.diagram;
+      img.alt = `Architecture diagram for ${project.title}`;
+      archSection.appendChild(img);
     }
     if (project.architecture && project.architecture.note) {
       const note = document.createElement("p");
       note.className = "helper";
       note.textContent = project.architecture.note;
-      archBox.appendChild(note);
+      archSection.appendChild(note);
     }
   }
 
@@ -177,13 +181,13 @@ function artifactMarkup(artifact, title, projectId, index) {
 
   if (artifact.type === "image") {
     const content = artifact.src
-      ? `<img src="${artifact.src}" alt="${artifact.caption || artifact.title}">`
+      ? `<img src="${artifact.src}" alt="${artifact.caption || artifact.title || 'Project artifact'}">`
       : `<div class="artifact-placeholder editable-image" data-edit-image-key="${editKeyBase}">Image placeholder</div>`;
     return `
       <div class="artifact">
         <div class="meta">${artifact.title}</div>
         ${content}
-        <p class="helper">${artifact.caption}</p>
+        <p class="helper">${artifact.caption || ''}</p>
       </div>
     `;
   }
@@ -643,4 +647,13 @@ function fillList(id, items) {
   const el = document.getElementById(id);
   if (!el || !items) return;
   el.innerHTML = items.map((item) => `<li>${item}</li>`).join("");
+}
+
+function attachCardLinkHandlers(container) {
+  container.querySelectorAll("[data-project-link]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const projectId = btn.dataset.projectLink;
+      window.location.href = `project-${projectId}.html`;
+    });
+  });
 }
