@@ -1,16 +1,16 @@
 {
   "owner": {
     "name": "Wilson Udomisor",
-    "title": "Data science that turns messy data into clear insight and confident action",
-    "proofLine": "You want answers you can trust, not buzzwords. I build simple, reliable data pipelines from raw data to real decisions. This portfolio showcases practical work with Python, SQL, Pandas, Scikit-learn, Spark, dbt, Airflow, and Power BI—all focused on helping you understand what is happening, why it is happening, and what you should do next."
+    "title": "Data Engineering that turns messy data into trusted decisions.",
+    "proofLine": "I am Wilson Udomisor, a hands on data engineer who builds reliable batch and real time systems with Spark, Airflow, Kafka, dbt, and Postgres. This Data Engineering portfolio showcases a platform in a repo, a medallion batch pipeline, and a streaming risk pipeline. Each project includes Docker Compose demos, diagrams, and clear READMEs that show how I design, orchestrate, transform, and validate data end to end."
   },
   "links": {
-    "githubProfile": "https://github.com/WilsonMisor/Data-Science",
+    "githubProfile": "https://github.com/WilsonMisor/Data-Engineering",
     "resume": "assets/docs/Wilson Udomisor (Data Engineering) resume.pdf",
-    "linkedin": "https://www.linkedin.com/in/wilson-udomisor",
-    "email": "wilson.s.udomisor@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/wilsonudomisor",
+    "email": "wilsonudomisor@gmail.com",
     "whatsappNumber": "2348037945101",
-    "drive": "https://drive.google.com/drive/folders/1F5_Rzzw2MyjPnvQGD8V4FoybpnLQ5IgZ?usp=sharing"
+    "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing"
   },
   "images": {
     "homeHeroPhoto": "assets/img/user/wilson1.jpeg",

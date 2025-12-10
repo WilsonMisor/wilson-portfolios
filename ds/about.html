@@ -3,19 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Wilson Udomisor - Data science practitioner specializing in batch analytics, streaming pipelines, analytics engineering, and explainable machine learning.">
+  <meta name="description" content="About Wilson Udomisor - Data engineer focused on building reliable, scalable data systems with strong testing, documentation, and orchestration.">
   <title>About | Wilson Udomisor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body data-site="ds">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+<body data-site="de">
   <div class="page">
     <header>
       <div class="container nav">
-        <div class="nav-logo">WU / DS</div>
+        <div class="nav-logo">WU / Data</div>
         <nav class="nav-links">
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
@@ -25,52 +24,97 @@
       </div>
     </header>
 
-    <main class="container" id="main-content">
+    <main class="container">
       <section class="hero">
-        <div id="heroAboutImage" class="photo-placeholder editable-image" data-edit-image-key="images.aboutHeroPhoto" role="img" aria-label="Wilson Udomisor about page hero image">Wide hero banner or centered portrait</div>
+        <div id="heroAboutImage" class="photo-placeholder editable-image" data-edit-image-key="images.aboutHeroPhoto" style="min-height:240px;" role="img" aria-label="Wilson Udomisor about page hero image">Wide hero banner</div>
       </section>
 
       <section class="section">
         <h1 id="ownerName">About</h1>
         <div class="card">
-          <p>I am Wilson Udomisor, and I use data science to answer very practical questions. How is performance trending. Which actions really move the needle. Where are the hidden risks and opportunities in your data. My goal is to bring structure and clarity to messy information so that your next move feels obvious and well supported.</p>
-          <p>I work across the full data science lifecycle. I explore raw data, clean it, and model it with Python, SQL, and Pandas. I use Scikit-learn to build straightforward models that are transparent and easy to explain. I design tables and transformations so that dashboards in Power BI or other tools show exactly the metrics you care about, with no confusion about how the numbers were created.</p>
-          <p>This portfolio focuses on real world style projects, not toy examples. You will see batch analytics that track demand and revenue over time, streaming style simulation that reacts as events arrive, and analytics engineering work that builds clean and tested layers on top of warehouses. In each project I explain the problem, the choices I made, the trade offs, and what the results mean for you.</p>
-          <p>I enjoy breaking complex ideas into simple pieces that non technical stakeholders can follow. That means clear documentation, readable code, and a strong story for every chart and table. If you are looking for someone who can sit between business and technology, ask the right questions, and then turn those questions into working data science solutions, this portfolio is my invitation to you.</p>
+          <p>I am Wilson Udomisor, a data engineer focused on building systems that are simple to run, easy to trust, and ready to scale. I care about the full lifecycle of data, from ingestion and quality checks to transformation, orchestration, and delivery into analytics ready layers.</p>
+          <p>In this Data Engineering portfolio, I present three connected projects that tell a complete story. The platform baseline standardises local infrastructure and makes development reproducible. The batch medallion pipeline uses Spark, Airflow, and dbt to move data from Bronze to Silver to Gold in a Postgres warehouse with clear testing and documentation. The real time risk pipeline uses Kafka for event streaming and Flink for continuous processing, with Airflow supporting governance and scheduling. A daily Spark reconciliation job helps keep streaming outputs aligned with batch truth.</p>
+          <p>My goal is to help teams reduce pipeline failures, detect issues early, and ship metrics with confidence. If you need someone who can translate requirements into clean pipelines, strong documentation, and working demos, you are in the right place.</p>
         </div>
       </section>
 
       <section class="section">
-        <h2>Technical Skills</h2>
-        <div class="snapshot-grid">
-          <div class="small-card">
-            <strong>Programming & Data Processing</strong>
-            <p class="helper">Python, SQL, Pandas, Scikit-learn, PySpark</p>
+        <!-- TODO: Update work experience with actual employment history or remove placeholder companies -->
+        <h2>Work experience</h2>
+        <div class="timeline">
+          <div class="card timeline-item">
+            <h3>Senior Data Engineer</h3>
+            <div class="meta">
+              <span>Northwind Labs</span>
+              <span>2022 — Present</span>
+            </div>
+            <ul class="list">
+              <li>Implemented Airflow-driven ELT with contracts that cut breakages by 40%.</li>
+              <li>Launched KPI marts with dbt docs, reducing analyst onboarding time.</li>
+              <li>Built observability dashboards to track freshness, volume, and schema drift.</li>
+            </ul>
+            <p class="helper">Stack: Python, Airflow, dbt, Snowflake, Great Expectations</p>
           </div>
-          <div class="small-card">
-            <strong>Data Engineering & Orchestration</strong>
-            <p class="helper">Airflow, dbt, Docker, Spark, ETL/ELT pipelines</p>
+
+          <div class="card timeline-item">
+            <h3>Data Engineer</h3>
+            <div class="meta">
+              <span>Atlas Health</span>
+              <span>2020 — 2022</span>
+            </div>
+            <ul class="list">
+              <li>Stabilized clinical data ingestion with retryable jobs and SLA alerts.</li>
+              <li>Modeled patient and encounter dimensions with reproducible tests.</li>
+              <li>Partnered with analysts to ship governed dashboards for operations.</li>
+            </ul>
+            <p class="helper">Stack: Python, SQL, Airbyte, dbt, BigQuery</p>
           </div>
-          <div class="small-card">
-            <strong>Databases & Storage</strong>
-            <p class="helper">PostgreSQL, BigQuery, Snowflake, SQL Server</p>
-          </div>
-          <div class="small-card">
-            <strong>Analytics & Visualization</strong>
-            <p class="helper">Power BI, Tableau, statistical modeling, forecasting</p>
+
+          <div class="card timeline-item">
+            <h3>Analytics Engineer</h3>
+            <div class="meta">
+              <span>Commerce Hub</span>
+              <span>2018 — 2020</span>
+            </div>
+            <ul class="list">
+              <li>Maintained KPI definitions and semantic layers for growth analytics.</li>
+              <li>Automated data quality checks to flag anomalies before stakeholder reviews.</li>
+              <li>Documented lineage to speed up debugging and onboarding.</li>
+            </ul>
+            <p class="helper">Stack: SQL, dbt, Looker, Fivetran</p>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <h2>Project Focus Areas</h2>
+        <h2>Technical skills</h2>
         <div class="card">
-          <ul class="list">
-            <li><strong>Batch Analytics Pipelines:</strong> End-to-end data pipelines from raw ingestion to business intelligence, using Python, Spark, dbt, and warehouse modeling.</li>
-            <li><strong>Streaming & Real-Time Data:</strong> Event-driven architectures for fraud detection and risk monitoring with Spark Structured Streaming and rolling feature windows.</li>
-            <li><strong>Analytics Engineering:</strong> Building clean semantic layers with dbt, implementing data quality tests, and creating self-service BI marts for stakeholders.</li>
-            <li><strong>Machine Learning for Business:</strong> Transparent, explainable models for demand forecasting, risk scoring, and pattern detection using Scikit-learn.</li>
-          </ul>
+          <div class="snapshot-grid">
+            <div class="small-card">
+              <strong>Data Processing</strong>
+              <p>Python, Spark, Pandas, SQL</p>
+            </div>
+            <div class="small-card">
+              <strong>Orchestration</strong>
+              <p>Airflow, Docker, Kubernetes</p>
+            </div>
+            <div class="small-card">
+              <strong>Streaming</strong>
+              <p>Kafka, Flink, Event-driven design</p>
+            </div>
+            <div class="small-card">
+              <strong>Data Warehousing</strong>
+              <p>dbt, Postgres, Data modeling</p>
+            </div>
+            <div class="small-card">
+              <strong>Infrastructure</strong>
+              <p>Terraform, Docker Compose, Git</p>
+            </div>
+            <div class="small-card">
+              <strong>Quality & Testing</strong>
+              <p>Great Expectations, pytest, CI/CD</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -90,11 +134,11 @@
       <div class="container footer-top">
         <div>
           <h3>Contact</h3>
-          <p class="helper">Reach out for data science engagements or collaborations.</p>
+          <p class="helper">Reach out for data engineering engagements or collaborations.</p>
           <div class="contact-buttons">
             <a class="btn primary" data-edit-link-key="links.whatsappNumber" data-whatsapp-link href="https://wa.me/2348037945101" target="_blank" rel="noopener">WhatsApp</a>
-            <a id="linkEmailAbout" class="btn secondary" data-link-path="links.email" data-mailto="true" data-edit-link-key="links.email" href="mailto:wilson.s.udomisor@gmail.com">Email</a>
-            <a id="linkLinkedInAbout" class="btn" data-link-path="links.linkedin" data-edit-link-key="links.linkedin" href="https://www.linkedin.com/in/wilson-udomisor" target="_blank" rel="noopener">LinkedIn</a>
+            <a id="linkEmailAbout" class="btn secondary" data-link-path="links.email" data-mailto="true" data-edit-link-key="links.email" href="mailto:wilsonudomisor@gmail.com">Email</a>
+            <a id="linkLinkedInAbout" class="btn" data-link-path="links.linkedin" data-edit-link-key="links.linkedin" href="https://www.linkedin.com/in/wilsonudomisor" target="_blank" rel="noopener">LinkedIn</a>
           </div>
           <button id="editToggle" class="btn edit-toggle" type="button">Edit</button>
         </div>

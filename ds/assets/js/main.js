@@ -114,16 +114,20 @@ function renderSingleProject(projects) {
 
   const archBox = document.getElementById("architectureBox");
   if (archBox) {
+    const archSection = archBox.querySelector("h3") ? archBox.querySelector("h3").parentElement : archBox;
     if (project.architecture && project.architecture.diagram) {
-      archBox.innerHTML = `<img src="${project.architecture.diagram}" alt="Architecture diagram for ${project.title}">`;
-    } else {
-      archBox.innerHTML = `<div class="diagram-placeholder editable-image" data-edit-image-key="project_${project.id}_architecture">Architecture diagram placeholder</div>`;
+      const existingContent = archSection.querySelector("h3");
+      archSection.innerHTML = existingContent ? `<h3>${existingContent.textContent}</h3>` : "";
+      const img = document.createElement("img");
+      img.src = project.architecture.diagram;
+      img.alt = `Architecture diagram for ${project.title}`;
+      archSection.appendChild(img);
     }
     if (project.architecture && project.architecture.note) {
       const note = document.createElement("p");
       note.className = "helper";
       note.textContent = project.architecture.note;
-      archBox.appendChild(note);
+      archSection.appendChild(note);
     }
   }
 
@@ -177,13 +181,13 @@ function artifactMarkup(artifact, title, projectId, index) {
 
   if (artifact.type === "image") {
     const content = artifact.src
-      ? `<img src="${artifact.src}" alt="${artifact.caption || artifact.title}">`
+      ? `<img src="${artifact.src}" alt="${artifact.caption || artifact.title || 'Project artifact'}">`
       : `<div class="artifact-placeholder editable-image" data-edit-image-key="${editKeyBase}">Image placeholder</div>`;
     return `
       <div class="artifact">
         <div class="meta">${artifact.title}</div>
         ${content}
-        <p class="helper">${artifact.caption}</p>
+        <p class="helper">${artifact.caption || ''}</p>
       </div>
     `;
   }
@@ -366,8 +370,8 @@ function setupEditableText() {
 /* -------- Global bindings ---------- */
 function bindGlobalContent() {
   setTextFromConfig("ownerName", "owner.name", "Wilson Udomisor");
-  setTextFromConfig("ownerTitle", "owner.title", "Data science that turns messy data into clear insight and confident action");
-  setTextFromConfig("ownerProof", "owner.proofLine", "You want answers you can trust, not buzzwords. I am Wilson Udomisor, a data science practitioner who builds simple, reliable pipelines from raw data to real decisions. In this portfolio you will see practical work with Python, SQL, Pandas, Scikit learn, Power BI and cloud data tools, all focused on one thing only helping you understand what is happening, why it is happening, and what you should do next.");
+  setTextFromConfig("ownerTitle", "owner.title", "Data Engineering that turns messy data into trusted decisions.");
+  setTextFromConfig("ownerProof", "owner.proofLine", "I am Wilson Udomisor, a hands on data engineer who builds reliable batch and real time systems with Spark, Airflow, Kafka, dbt, and Postgres. This Data Engineering portfolio showcases a platform in a repo, a medallion batch pipeline, and a streaming risk pipeline. Each project includes Docker Compose demos, diagrams, and clear READMEs that show how I design, orchestrate, transform, and validate data end to end.");
 
   applyLinkBindings();
   setWhatsAppLink();
@@ -392,7 +396,13 @@ function applyLinkBindings() {
     if (!value) {
       el.title = "Add your link via Admin or Edit Mode.";
       el.href = "#";
+      if (el.id === "linkResume") {
+        el.textContent = "Add your resume to assets/docs/resume.pdf";
+      }
     } else {
+      if (el.id === "linkResume") {
+        el.textContent = "Download Resume";
+      }
       el.href = allowMailto && !value.startsWith("mailto:") ? `mailto:${value}` : value;
     }
   });
@@ -641,11 +651,9 @@ function fillList(id, items) {
 
 function attachCardLinkHandlers(container) {
   container.querySelectorAll("[data-project-link]").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
+    btn.addEventListener("click", () => {
       const projectId = btn.dataset.projectLink;
-      const targetPage = `project-${projectId}.html`;
-      window.location.href = targetPage;
+      window.location.href = `project-${projectId}.html`;
     });
   });
 }
