@@ -24,8 +24,14 @@ You can also open `index.html` directly, but browsers may block JSON fetches; us
 
 ## Permanent assets
 - Place images in `assets/img/user/` (headshot, hero photos, project shots, diagrams).
+- Place project images in `assets/img/projects/` (architecture diagrams, artifacts, screenshots).
 - Place documents in `assets/docs/` (resume, case studies). Default resume path: `assets/docs/resume.pdf`.
 - Optional link placeholders can live in `assets/links/` if needed.
+
+## Updating photos
+**IMPORTANT:** Browser-based "Change photo" does NOT persist across devices on GitHub Pages!
+- For local preview only: See [HOW-TO-CHANGE-PHOTOS.md](HOW-TO-CHANGE-PHOTOS.md)
+- **For permanent changes:** See [IMAGE-UPDATE.md](IMAGE-UPDATE.md) - must update actual image files and push to GitHub
 
 ## Update projects
 Edit `data/projects.json`. Each object follows the schema provided in the file, including:

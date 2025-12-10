@@ -1,16 +1,25 @@
-# How to Change Photos on Your Portfolio
+# Photo Preview Feature (Local Development Only)
 
-## Quick Start
+## ⚠️ IMPORTANT: This Feature Does NOT Work on GitHub Pages
 
-1. **Open your portfolio** in a web browser (locally or on the web)
-2. **Hover over any photo** - you'll see a camera icon (📷) appear
-3. **Click "Change photo"** button that appears in the bottom-right corner
-4. **Select an image** from your computer's file explorer
-5. **Done!** The image updates immediately and persists across page refreshes
+**The browser-based photo editor is for LOCAL PREVIEW ONLY.**
 
-## What Images Can You Change?
+- ❌ **Does NOT save changes to GitHub**
+- ❌ **Does NOT persist across devices**
+- ❌ **Does NOT work on the live site (GitHub Pages)**
+- ✅ **Only for previewing how a new photo looks before committing it**
 
-You can change the following images:
+**To permanently change photos visible on all devices, see [IMAGE-UPDATE.md](IMAGE-UPDATE.md)**
+
+---
+
+## How the Preview Feature Works (Local Development)
+
+When running the site **locally** (http://localhost or file://):
+
+## What Images Can You Preview?
+
+When running locally, you can preview changes to:
 
 ### Home Page (index.html)
 - Hero/profile photo (main landing page image)
@@ -23,88 +32,77 @@ You can change the following images:
 - Architecture diagrams for each project
 - Project artifact images (screenshots, mockups, etc.)
 
-## Two Ways to Update Images
+## How to Preview Images Locally
 
-### Option 1: Upload from Computer (Recommended)
+### Step 1: Run the Site Locally
+```bash
+cd C:\Users\USER\Documents\wilson-portfolios-main\wilson-portfolios-main\ds
+python -m http.server 8000
+# Then open http://localhost:8000
+```
+
+### Step 2: Preview a Photo
 1. Hover over the image
-2. Click **"Change photo"**
+2. Click **"Preview Photo"** button
 3. Select an image file from your computer
-4. Maximum file size: 5MB
-5. Supported formats: JPG, PNG, GIF, WebP, SVG
+4. The preview appears immediately in your browser
 
-### Option 2: Use Image URL
-1. Hover over the image
-2. Click **"Use URL"**
-3. Enter a direct image URL (must end in .jpg, .png, etc.)
-4. The image will load from that URL
+**Remember:** This is a PREVIEW only. Changes disappear when you close the browser tab.
 
 ## How It Works
 
-- **No Server Needed**: Images are stored in your browser's localStorage
-- **Persistent**: Your changes persist across page refreshes
-- **Local Only**: Changes are saved only in your browser (not on the server)
-- **Safe**: No files are uploaded to the web; they stay on your computer
+- **Preview Only**: Changes are stored in sessionStorage (temporary memory)
+- **Not Persistent**: Preview disappears when you close the tab
+- **Local Only**: Only works when running the site locally
+- **Disabled on Production**: The feature is completely disabled on GitHub Pages
 
-## Important Notes
+## To Permanently Change Photos
 
-### For Local Development
-- Images you upload are converted to data URLs and stored in localStorage
-- This means they persist as long as you don't clear your browser data
-- Each browser stores its own copy (Chrome, Firefox, etc. won't share changes)
+**The preview feature CANNOT save changes permanently.**
 
-### For Publishing
-- To permanently add images to your website, place them in `assets/img/user/`
-- Then update the `data/site-config.json` file with the correct paths
-- Or use the Admin panel (admin.html) to manage images and export settings
+To make photos visible on all devices and on GitHub Pages:
 
-### File Size Limits
-- Maximum 5MB per image
-- Large images may slow down your browser
-- For best performance, resize images to appropriate dimensions before uploading
+1. **See [IMAGE-UPDATE.md](IMAGE-UPDATE.md)** for complete instructions
+2. **Summary:**
+   - Replace the actual image file in `assets/img/user/` or `assets/img/projects/`
+   - Commit and push to GitHub
+   - Wait for GitHub Pages to rebuild (1-3 minutes)
 
-### Browser Compatibility
-- Works in all modern browsers (Chrome, Firefox, Safari, Edge)
-- Requires JavaScript to be enabled
-- Uses HTML5 FileReader API (supported by all modern browsers)
+### Production (GitHub Pages)
+- **Photo editing is completely disabled** on the live site
+- Visitors cannot change photos
+- Only the repository owner can change photos by updating files in GitHub
 
 ## Troubleshooting
 
-**Image doesn't appear after selecting?**
-- Check browser console for errors (F12 → Console tab)
-- Make sure the file is a valid image format
-- Try a smaller image (under 1MB)
+**"I don't see the Preview Photo button on GitHub Pages"**
+- This is correct! The feature is disabled on production (GitHub Pages)
+- It only works when running locally
+- To change photos on the live site, see IMAGE-UPDATE.md
 
-**Changes disappear after refresh?**
-- Check if you're in incognito/private mode (doesn't save localStorage)
-- Make sure cookies/site data aren't being cleared
+**"My preview disappeared after closing the tab"**
+- This is expected behavior. Previews use sessionStorage (temporary)
+- To make changes permanent, update the actual image files in the repository
 
-**Can't see the "Change photo" button?**
-- Make sure you're hovering directly over the image
-- Try enabling Edit Mode (click "Edit" button in footer, or press Ctrl+Shift+E)
+**"I want to permanently change a photo"**
+- See [IMAGE-UPDATE.md](IMAGE-UPDATE.md) for step-by-step instructions
+- You must replace the image file in the repository and push to GitHub
 
-**Want to reset an image to default?**
-- Open browser console (F12)
-- Type: `localStorage.clear()` and press Enter
-- Refresh the page
+## Summary
 
-## Advanced: Edit Mode
+**The browser photo editor is NOT a real photo uploader.**
 
-For more control, enable **Edit Mode**:
-- Click the **"Edit"** button in the footer, or
-- Press **Ctrl + Shift + E**
+| What It Does | What It Does NOT Do |
+|-------------|---------------------|
+| ✅ Preview how a new photo looks | ❌ Upload to GitHub |
+| ✅ Work when running locally | ❌ Work on GitHub Pages production |
+| ✅ Help you test before committing | ❌ Save across devices |
+| ✅ Use sessionStorage (temporary) | ❌ Persist after closing tab |
 
-In Edit Mode:
-- All editable elements show outlines
-- Change photo buttons are always visible (no need to hover)
-- You can also edit text and links inline
-
-## Exporting Your Changes
-
-Use the **Admin Panel** (admin.html) to:
-- Export all your changes as a JSON file
-- Import changes from another browser
-- Update the site configuration permanently
+**For permanent photo changes → See [IMAGE-UPDATE.md](IMAGE-UPDATE.md)**
 
 ---
 
-**Need Help?** Check the main README.md or open an issue on GitHub.
+**Need Help?**
+- Permanent changes: See [IMAGE-UPDATE.md](IMAGE-UPDATE.md)
+- General questions: Check the main [README.md](README.md)
