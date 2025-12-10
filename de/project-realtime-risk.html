@@ -62,7 +62,11 @@
         </div>
         <div id="architectureBox" class="card">
           <h3>Architecture / flow</h3>
-          <div class="diagram-placeholder editable-image" data-edit-image-key="project_realtime-risk_architecture">Architecture diagram placeholder</div>
+          <div class="editable-photo" data-editable-photo-id="realtime-risk-architecture">
+            <img src="assets/img/realtime-risk-architecture.jpg" alt="Realtime Risk Pipeline architecture diagram" class="editable-photo-img" style="min-height:240px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'300\'%3E%3Crect fill=\'%230c1328\' width=\'600\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'16\' fill=\'%2394a3b8\'%3EArchitecture diagram%3C/text%3E%3C/svg%3E'">
+            <button type="button" class="editable-photo-button">Change photo</button>
+            <input type="file" accept="image/*" class="editable-photo-input" hidden>
+          </div>
           <p class="helper">Kafka and Zookeeper stack with a risk_events topic, Python producer and consumer, Flink job that reads from Kafka and writes to a rt_risk_events landing table in Postgres.</p>
         </div>
       </section>
@@ -106,7 +110,11 @@
         <div class="gallery" id="artifactsGallery">
           <div class="artifact">
             <div class="meta">Streaming Flow Diagram</div>
-            <div class="artifact-placeholder editable-image" data-edit-image-key="project_realtime-risk_artifact_0">Image placeholder</div>
+            <div class="editable-photo" data-editable-photo-id="realtime-risk-artifact-0">
+              <img src="assets/img/realtime-risk-artifact-0.jpg" alt="Streaming Flow Diagram" class="editable-photo-img" style="min-height:240px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'300\'%3E%3Crect fill=\'%230c1328\' width=\'400\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'16\' fill=\'%2394a3b8\'%3EArtifact image%3C/text%3E%3C/svg%3E'">
+              <button type="button" class="editable-photo-button">Change photo</button>
+              <input type="file" accept="image/*" class="editable-photo-input" hidden>
+            </div>
             <p class="helper">Producer sends risk events to Kafka, Flink consumes and writes into Postgres.</p>
           </div>
         </div>
@@ -138,5 +146,6 @@
     </footer>
   </div>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/photo-editor.js"></script>
 </body>
 </html>

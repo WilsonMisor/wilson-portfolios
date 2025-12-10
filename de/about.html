@@ -26,7 +26,11 @@
 
     <main class="container">
       <section class="hero">
-        <div id="heroAboutImage" class="photo-placeholder editable-image" data-edit-image-key="images.aboutHeroPhoto" role="img" aria-label="Wilson Udomisor about page hero image">Wide hero banner or centered portrait</div>
+        <div class="editable-photo" data-editable-photo-id="hero-about-photo">
+          <img src="assets/img/hero-about.jpg" alt="Wilson Udomisor about page hero image" class="editable-photo-img" style="min-height:240px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'300\'%3E%3Crect fill=\'%230c1328\' width=\'800\' height=\'300\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'16\' fill=\'%2394a3b8\'%3EWide hero banner%3C/text%3E%3C/svg%3E'">
+          <button type="button" class="editable-photo-button">Change photo</button>
+          <input type="file" accept="image/*" class="editable-photo-input" hidden>
+        </div>
       </section>
 
       <section class="section">
@@ -147,5 +151,6 @@
     </footer>
   </div>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/photo-editor.js"></script>
 </body>
 </html>

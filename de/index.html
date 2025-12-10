@@ -38,7 +38,11 @@
               <a id="linkGithubProfile" class="btn" data-link-path="links.githubProfile" data-edit-link-key="links.githubProfile" href="https://github.com/WilsonMisor/Data-Engineering" target="_blank" rel="noopener">GitHub</a>
             </div>
           </div>
-          <div id="heroHomeImage" class="photo-placeholder editable-image" data-edit-image-key="images.homeHeroPhoto" role="img" aria-label="Wilson Udomisor professional photo">Add your headshot or brand visual</div>
+          <div class="editable-photo" data-editable-photo-id="hero-home-photo">
+            <img src="assets/img/hero-home.jpg" alt="Wilson Udomisor professional photo" class="editable-photo-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\'%3E%3Crect fill=\'%230c1328\' width=\'400\' height=\'400\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'16\' fill=\'%2394a3b8\'%3EAdd your headshot%3C/text%3E%3C/svg%3E'">
+            <button type="button" class="editable-photo-button">Change photo</button>
+            <input type="file" accept="image/*" class="editable-photo-input" hidden>
+          </div>
         </div>
       </section>
 
@@ -58,7 +62,11 @@
             <a id="linkEmail" class="btn secondary" data-link-path="links.email" data-mailto="true" data-edit-link-key="links.email" href="mailto:wilsonudomisor@gmail.com">Email</a>
             <a id="linkLinkedIn" class="btn" data-link-path="links.linkedin" data-edit-link-key="links.linkedin" href="https://www.linkedin.com/in/wilsonudomisor" target="_blank" rel="noopener">LinkedIn</a>
           </div>
-          <div id="headshotImage" class="photo-placeholder editable-image" data-edit-image-key="images.headshot" style="max-width:180px; min-height:180px; margin-top:12px;" role="img" aria-label="Wilson Udomisor headshot">Headshot placeholder</div>
+          <div class="editable-photo" data-editable-photo-id="headshot-photo" style="max-width:180px; margin-top:12px;">
+            <img src="assets/img/headshot.jpg" alt="Wilson Udomisor headshot" class="editable-photo-img" style="min-height:180px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'180\' height=\'180\'%3E%3Crect fill=\'%230c1328\' width=\'180\' height=\'180\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%2394a3b8\'%3EHeadshot%3C/text%3E%3C/svg%3E'">
+            <button type="button" class="editable-photo-button">Change photo</button>
+            <input type="file" accept="image/*" class="editable-photo-input" hidden>
+          </div>
         </div>
       </section>
     </main>
@@ -80,5 +88,6 @@
     </footer>
   </div>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/photo-editor.js"></script>
 </body>
 </html>
