@@ -7,7 +7,21 @@ let editMode = false;
 let siteConfig = null;
 let projectsData = [];
 
+// IMPORTANT: Photo changes via browser DO NOT persist across devices on GitHub Pages!
+// This feature only works for local preview. To permanently change photos, you MUST:
+// 1. Replace the actual image file in the repository (see IMAGE-UPDATE.md)
+// 2. Commit and push to GitHub
+// 3. Wait for GitHub Pages to rebuild
+// The browser-based "Change photo" button is DISABLED on production (GitHub Pages).
+const isLocalDevelopment = window.location.hostname === 'localhost'
+  || window.location.hostname === '127.0.0.1'
+  || window.location.protocol === 'file:';
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Add class to body if running in local development
+  if (isLocalDevelopment) {
+    document.body.classList.add('local-dev');
+  }
   setActiveNav();
   initSite();
 });
@@ -114,20 +128,16 @@ function renderSingleProject(projects) {
 
   const archBox = document.getElementById("architectureBox");
   if (archBox) {
-    const archSection = archBox.querySelector("h3") ? archBox.querySelector("h3").parentElement : archBox;
     if (project.architecture && project.architecture.diagram) {
-      const existingContent = archSection.querySelector("h3");
-      archSection.innerHTML = existingContent ? `<h3>${existingContent.textContent}</h3>` : "";
-      const img = document.createElement("img");
-      img.src = project.architecture.diagram;
-      img.alt = `Architecture diagram for ${project.title}`;
-      archSection.appendChild(img);
+      archBox.innerHTML = `<img src="${project.architecture.diagram}" alt="Architecture diagram for ${project.title}">`;
+    } else {
+      archBox.innerHTML = `<div class="diagram-placeholder editable-image" data-edit-image-key="project_${project.id}_architecture">Architecture diagram placeholder</div>`;
     }
     if (project.architecture && project.architecture.note) {
       const note = document.createElement("p");
       note.className = "helper";
       note.textContent = project.architecture.note;
-      archSection.appendChild(note);
+      archBox.appendChild(note);
     }
   }
 
@@ -181,13 +191,13 @@ function artifactMarkup(artifact, title, projectId, index) {
 
   if (artifact.type === "image") {
     const content = artifact.src
-      ? `<img src="${artifact.src}" alt="${artifact.caption || artifact.title || 'Project artifact'}">`
+      ? `<img src="${artifact.src}" alt="${artifact.caption || artifact.title}">`
       : `<div class="artifact-placeholder editable-image" data-edit-image-key="${editKeyBase}">Image placeholder</div>`;
     return `
       <div class="artifact">
         <div class="meta">${artifact.title}</div>
         ${content}
-        <p class="helper">${artifact.caption || ''}</p>
+        <p class="helper">${artifact.caption}</p>
       </div>
     `;
   }
@@ -248,46 +258,94 @@ function setupEditableElements() {
 }
 
 function setupEditableImages() {
+  // On production (GitHub Pages), disable the photo editing UI
+  // Photo changes ONLY work when you update files in the repo and push to GitHub
+  if (!isLocalDevelopment) {
+    console.info('📸 Photo editing is disabled on production. To change photos, update image files in the repository and push to GitHub. See IMAGE-UPDATE.md for instructions.');
+
+    // Still load images from config, but don't show edit controls
+    document.querySelectorAll("[data-edit-image-key]").forEach((el) => {
+      const baseKey = el.dataset.editImageKey;
+      const cfg = getConfigValue(baseKey);
+      if (cfg) setElementImage(el, cfg);
+    });
+    return; // Exit early - no editing UI on production
+  }
+
+  // LOCAL DEVELOPMENT ONLY - Photo preview feature
+  console.info('📸 Photo editing enabled (local development). Changes are PREVIEW ONLY and do NOT persist to GitHub. See IMAGE-UPDATE.md to permanently update photos.');
+
   document.querySelectorAll("[data-edit-image-key]").forEach((el) => {
     const baseKey = el.dataset.editImageKey;
     const key = storageKey(baseKey);
+
     if (!el.dataset.imageSetup) {
       const overlay = document.createElement("div");
       overlay.className = "edit-overlay";
+
+      // Preview button (local only)
       const btnFile = document.createElement("button");
       btnFile.type = "button";
       btnFile.className = "edit-badge";
-      btnFile.textContent = "Change photo";
+      btnFile.textContent = "Preview Photo";
+      btnFile.title = "PREVIEW ONLY - Select an image to preview locally. Does NOT save to repository.";
+
       const btnUrl = document.createElement("button");
       btnUrl.type = "button";
       btnUrl.className = "edit-badge";
       btnUrl.textContent = "Use URL";
+      btnUrl.title = "PREVIEW ONLY - Enter an image URL for local preview.";
+
       const input = document.createElement("input");
       input.type = "file";
       input.accept = "image/*";
       input.style.display = "none";
 
-      btnFile.addEventListener("click", () => input.click());
+      btnFile.addEventListener("click", (e) => {
+        e.stopPropagation();
+        input.click();
+      });
+
       input.addEventListener("change", (e) => {
         const file = e.target.files && e.target.files[0];
         if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+          alert('Please select a valid image file');
+          return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+          alert('Image file is too large. Please select an image smaller than 5MB');
+          return;
+        }
+
         const reader = new FileReader();
         reader.onload = (evt) => {
           const dataUrl = evt.target?.result;
           if (typeof dataUrl === "string") {
-            localStorage.setItem(key, dataUrl);
+            // Store in sessionStorage instead of localStorage
+            // This makes it clear it's a temporary preview
+            sessionStorage.setItem(key, dataUrl);
             setElementImage(el, dataUrl);
+            console.warn(`⚠️ PREVIEW ONLY: Image "${baseKey}" changed in browser. To make this permanent, replace the actual file in assets/img/ and commit to GitHub. See IMAGE-UPDATE.md for details.`);
+            alert(`Preview updated! This is NOT saved to GitHub.\n\nTo make this change permanent:\n1. Replace the image file in the repository\n2. Commit and push to GitHub\n\nSee IMAGE-UPDATE.md for detailed instructions.`);
           }
+        };
+        reader.onerror = () => {
+          alert('Failed to read image file. Please try again.');
         };
         reader.readAsDataURL(file);
       });
 
-      btnUrl.addEventListener("click", () => {
-        const current = localStorage.getItem(key) || getConfigValue(baseKey) || "";
-        const next = window.prompt("Enter image path or URL", current);
+      btnUrl.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const current = sessionStorage.getItem(key) || getConfigValue(baseKey) || "";
+        const next = window.prompt("Enter image URL (PREVIEW ONLY - not saved to repo)", current);
         if (next) {
-          localStorage.setItem(key, next);
+          sessionStorage.setItem(key, next);
           setElementImage(el, next);
+          console.warn(`⚠️ PREVIEW ONLY: Image URL for "${baseKey}" changed. Not saved to repository.`);
         }
       });
 
@@ -296,9 +354,12 @@ function setupEditableImages() {
       el.appendChild(input);
       el.dataset.imageSetup = "true";
     }
-    const saved = localStorage.getItem(key);
-    if (saved) setElementImage(el, saved);
-    else {
+
+    // Load from sessionStorage (preview) or config (permanent)
+    const preview = sessionStorage.getItem(key);
+    if (preview) {
+      setElementImage(el, preview);
+    } else {
       const cfg = getConfigValue(baseKey);
       if (cfg) setElementImage(el, cfg);
     }
@@ -370,8 +431,8 @@ function setupEditableText() {
 /* -------- Global bindings ---------- */
 function bindGlobalContent() {
   setTextFromConfig("ownerName", "owner.name", "Wilson Udomisor");
-  setTextFromConfig("ownerTitle", "owner.title", "Data Engineering that turns messy data into trusted decisions.");
-  setTextFromConfig("ownerProof", "owner.proofLine", "I am Wilson Udomisor, a hands on data engineer who builds reliable batch and real time systems with Spark, Airflow, Kafka, dbt, and Postgres. This Data Engineering portfolio showcases a platform in a repo, a medallion batch pipeline, and a streaming risk pipeline. Each project includes Docker Compose demos, diagrams, and clear READMEs that show how I design, orchestrate, transform, and validate data end to end.");
+  setTextFromConfig("ownerTitle", "owner.title", "Data science that turns messy data into clear insight and confident action");
+  setTextFromConfig("ownerProof", "owner.proofLine", "You want answers you can trust, not buzzwords. I am Wilson Udomisor, a data science practitioner who builds simple, reliable pipelines from raw data to real decisions. In this portfolio you will see practical work with Python, SQL, Pandas, Scikit learn, Power BI and cloud data tools, all focused on one thing only helping you understand what is happening, why it is happening, and what you should do next.");
 
   applyLinkBindings();
   setWhatsAppLink();
@@ -396,13 +457,7 @@ function applyLinkBindings() {
     if (!value) {
       el.title = "Add your link via Admin or Edit Mode.";
       el.href = "#";
-      if (el.id === "linkResume") {
-        el.textContent = "Add your resume to assets/docs/resume.pdf";
-      }
     } else {
-      if (el.id === "linkResume") {
-        el.textContent = "Download Resume";
-      }
       el.href = allowMailto && !value.startsWith("mailto:") ? `mailto:${value}` : value;
     }
   });
@@ -651,9 +706,11 @@ function fillList(id, items) {
 
 function attachCardLinkHandlers(container) {
   container.querySelectorAll("[data-project-link]").forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
       const projectId = btn.dataset.projectLink;
-      window.location.href = `project-${projectId}.html`;
+      const targetPage = `project-${projectId}.html`;
+      window.location.href = targetPage;
     });
   });
 }

@@ -1,12 +1,12 @@
 :root {
-  --bg: #0f172a;
-  --panel: #111a33;
-  --card: #0c1328;
-  --accent: #4ade80;
-  --accent-2: #38bdf8;
-  --text: #e2e8f0;
+  --bg: #0c111d;
+  --panel: #111a2d;
+  --card: #0b1329;
+  --accent: #f59e0b;
+  --accent-2: #f472b6;
+  --text: #f1f5f9;
   --muted: #94a3b8;
-  --border: #1f2a44;
+  --border: #1f2940;
   --max-width: 1120px;
   --space-1: 6px;
   --space-2: 10px;
@@ -396,37 +396,6 @@ footer .footer-top {
   font-size: 14px;
 }
 
-/* Admin */
-.admin-grid {
-  display: grid;
-  gap: var(--space-2);
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  margin-top: var(--space-2);
-}
-
-.admin-grid label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 14px;
-  color: var(--text);
-}
-
-.admin-grid input {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--text);
-}
-
-input:focus-visible,
-button:focus-visible,
-a:focus-visible {
-  outline: 2px solid var(--accent-2);
-  outline-offset: 2px;
-}
-
 /* Edit mode */
 .edit-toggle {
   margin-top: var(--space-3);
@@ -442,6 +411,42 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   color: var(--muted);
+  cursor: pointer;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.editable-image:hover {
+  opacity: 0.95;
+  box-shadow: inset 0 0 0 2px var(--accent-2);
+}
+
+/* Visual indicator for editable images (local development only) */
+.editable-image::before {
+  content: "📷";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Only show camera icon when running locally */
+.editable-image:hover::before {
+  opacity: 0.6;
+}
+
+/* On production (GitHub Pages), don't show the camera icon since editing is disabled */
+@media (min-width: 1px) {
+  body:not(.local-dev) .editable-image::before {
+    display: none;
+  }
+  body:not(.local-dev) .editable-image:hover {
+    box-shadow: none;
+    cursor: default;
+  }
 }
 
 .editable-image.has-image {
@@ -458,13 +463,16 @@ a:focus-visible {
 }
 
 .edit-badge {
-  background: rgba(15, 23, 42, 0.85);
+  background: rgba(15, 23, 42, 0.95);
   border: 1px solid var(--accent-2);
   color: var(--text);
   border-radius: 8px;
   padding: 6px 10px;
   cursor: pointer;
   font-size: 12px;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .edit-link-btn {
@@ -479,6 +487,12 @@ a:focus-visible {
   cursor: pointer;
 }
 
+/* Show edit overlay on hover for images (always accessible) */
+.editable-image:hover .edit-overlay {
+  display: inline-flex;
+}
+
+/* In edit mode, always show overlays and link buttons */
 body.edit-mode .edit-overlay,
 body.edit-mode .edit-link-btn {
   display: inline-flex;
@@ -489,61 +503,32 @@ body.edit-mode [data-edit-text-key] {
   outline-offset: 4px;
 }
 
-/* Editable Photo Components */
-.editable-photo {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+/* Improved edit overlay visibility */
+.edit-overlay {
+  z-index: 10;
 }
 
-.editable-photo-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius);
-}
-
-.editable-photo-img.has-photo {
-  border: 1px solid var(--border);
-}
-
-.editable-photo-button {
-  position: absolute;
-  bottom: var(--space-2);
-  right: var(--space-2);
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid var(--accent);
-  color: var(--text);
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 13px;
-  cursor: pointer;
+.edit-badge:hover {
+  background: rgba(15, 23, 42, 0.95);
+  transform: scale(1.05);
   transition: all 0.2s ease;
-  opacity: 0;
-  pointer-events: none;
 }
 
-.editable-photo:hover .editable-photo-button,
-.editable-photo-button:focus-visible {
-  opacity: 1;
-  pointer-events: auto;
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent);
+  color: #0f172a;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 8px 0;
+  z-index: 100;
+  font-weight: 600;
 }
 
-body.edit-mode .editable-photo-button {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.editable-photo-button:hover {
-  background: rgba(15, 23, 42, 1);
-  border-color: var(--accent-2);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.editable-photo-input {
-  display: none;
+.skip-link:focus {
+  top: 0;
 }
 
 @media (min-width: 720px) {
