@@ -1,0 +1,101 @@
+================================================================================
+EMAIL LINK FIX REPORT
+================================================================================
+
+Date: 2025-12-11
+Issue: Email links were displaying incorrect URLs
+Status: FIXED
+
+================================================================================
+PROBLEM DESCRIPTION
+================================================================================
+
+The email button links were displaying:
+https://wilsonmisor.github.io/wilson-portfolios/wilsonudomisor/wilsonudomisor@gmail.com
+
+Instead of:
+mailto:wilsonudomisor@gmail.com
+
+Root Cause:
+- Email links had both href="mailto:wilsonudomisor@gmail.com" AND data-link-path="links.email"
+- JavaScript function applyLinkBindings() was reading from site-config.json
+- The config had "email": "wilsonudomisor@gmail.com" (without mailto:)
+- JavaScript was overriding the correct href with the config value
+- Since the email address didn't start with "mailto:", it was treated as a relative URL
+
+================================================================================
+SOLUTION APPLIED
+================================================================================
+
+Removed the data-link-path="links.email" attribute from all email links.
+
+The links now use only:
+<a class="btn primary" href="mailto:wilsonudomisor@gmail.com">Email</a>
+
+This allows the browser to handle the email link correctly without JavaScript interference.
+
+================================================================================
+FILES CORRECTED (9 files)
+================================================================================
+
+1. /wilsonudomisor/index.html
+   - Line 58: Contact section email link
+   - Line 73: Footer email link
+
+2. /wilsonudomisor/about.html
+   - Line 104: Footer email link
+
+3. /wilsonudomisor/projects.html
+   - Line 56: Footer email link
+
+4. /wilsonudomisor/projects/project-platform.html
+   - Line 119: Footer email link
+
+5. /wilsonudomisor/projects/project-batch-medallion.html
+   - Line 108: Footer email link
+
+6. /wilsonudomisor/projects/project-realtime-risk.html
+   - Line 108: Footer email link
+
+7. /wilsonudomisor/projects/project-retail-demand-revenue-intelligence.html
+   - Line 108: Footer email link
+
+8. /wilsonudomisor/projects/project-realtime-fraud-risk-signal-pipeline.html
+   - Line 108: Footer email link
+
+9. /wilsonudomisor/projects/project-modern-analytics-engineering-showcase.html
+   - Line 108: Footer email link
+
+================================================================================
+CHANGE SUMMARY
+================================================================================
+
+Changed FROM:
+<a class="btn primary" data-link-path="links.email" href="mailto:wilsonudomisor@gmail.com">Email</a>
+
+Changed TO:
+<a class="btn primary" href="mailto:wilsonudomisor@gmail.com">Email</a>
+
+Total instances fixed: 10 (2 in index.html, 1 in each of the other 8 pages)
+
+================================================================================
+VERIFICATION
+================================================================================
+
+Verified that no instances of data-link-path="links.email" remain in the codebase.
+
+All email links now correctly open the default email client with:
+To: wilsonudomisor@gmail.com
+
+================================================================================
+NO ADDITIONAL CHANGES NEEDED
+================================================================================
+
+The following were NOT modified (and don't need to be):
+- /wilsonudomisor/assets/js/main.js (JavaScript is fine, issue was in HTML)
+- /wilsonudomisor/assets/data/site-config.json (config is fine, just not used for email links anymore)
+- Other social links (LinkedIn, TikTok, YouTube) still use data-link-path and work correctly
+
+================================================================================
+END OF REPORT
+================================================================================
