@@ -1,0 +1,357 @@
+[
+  {
+    "id": "platform",
+    "title": "Data Engineering Platform in a Repo",
+    "tagline": "Shared local stack with Postgres, Adminer, Airflow, and optional Kubernetes and Terraform to support all portfolio pipelines.",
+    "problem": "Each pipeline needed a consistent, reproducible environment for databases, orchestration, and tooling on a single laptop.",
+    "impact": "Simplified local setup, reduced configuration drift, and made it easy to spin up the same baseline stack for every project.",
+    "category": "platform",
+    "roleType": "Solo",
+    "roleDetail": "Designed and implemented the local data platform, compose files, and optional Kubernetes and Terraform scaffolds.",
+    "team": "Independent portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "Docker",
+      "Docker Compose",
+      "Postgres",
+      "Adminer",
+      "Airflow",
+      "Kubernetes",
+      "Terraform",
+      "Python"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/platform"
+    },
+    "featured": true,
+    "contextGoal": "Provide a simple, repeatable local platform that all batch and real-time pipelines can share.",
+    "architecture": {
+      "diagram": "",
+      "note": "Docker Compose base for Postgres and Adminer, extended with Airflow, plus optional Kubernetes manifests and Terraform modules."
+    },
+    "whatIBuilt": [
+      "Docker Compose stack with Postgres and Adminer for shared local storage and SQL inspection.",
+      "Airflow extension compose file with metadata database, webserver, scheduler, and init container.",
+      "Standardised airflow folder for DAGs, logs, and plugins that other projects can reuse.",
+      "Optional Kubernetes manifests for Postgres and Adminer using a dedicated namespace.",
+      "Optional Terraform scaffold with a reusable module and local environment configuration."
+    ],
+    "challenges": [
+      "Keeping the stack simple enough for beginners while still reflecting real platform patterns.",
+      "Avoiding port conflicts across multiple projects running on the same laptop.",
+      "Designing a structure that batch and streaming projects can reuse without tight coupling."
+    ],
+    "outcomeDetails": [
+      "Any pipeline in the portfolio can be started against a consistent local platform.",
+      "Onboarding to the portfolio is easier because developers start from the same base commands.",
+      "The project doubles as a teaching aid for how platform components fit together."
+    ],
+    "artifacts": [
+      {
+        "title": "Platform Compose Layout",
+        "type": "image",
+        "src": "",
+        "caption": "High level view of Postgres, Adminer, and Airflow in the local stack."
+      }
+    ]
+  },
+  {
+    "id": "batch-medallion",
+    "title": "Batch Medallion Pipeline",
+    "tagline": "End-to-end Bronze, Silver, Gold batch pipeline using Spark, Airflow, dbt, and Postgres.",
+    "problem": "Raw data needed a clear path from messy CSV input to analytics-ready tables without manual, one-off scripts.",
+    "impact": "Turned raw files into layered warehouse tables with predictable structure so analytics and reporting can trust the data.",
+    "category": "pipelines",
+    "roleType": "Solo",
+    "roleDetail": "Designed and built the medallion pipeline, including data generation, Spark transforms, dbt models, and Airflow orchestration.",
+    "team": "Independent portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "Python",
+      "Spark",
+      "Airflow",
+      "dbt",
+      "Postgres",
+      "Docker"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/batch-medallion"
+    },
+    "featured": true,
+    "contextGoal": "Show how a small but realistic batch pipeline implements the medallion pattern with clear responsibilities at each layer.",
+    "architecture": {
+      "diagram": "",
+      "note": "CSV generator writes raw files, Python loads Bronze tables in Postgres, Spark cleans to Silver, dbt models build Gold, all orchestrated by an Airflow DAG."
+    },
+    "whatIBuilt": [
+      "Python script that generates synthetic CSV data resembling transactional events.",
+      "Bronze loader script that ingests the CSV into a Bronze schema table in Postgres.",
+      "Spark job that reads Bronze over JDBC, cleans and standardises data, and writes to Silver tables.",
+      "dbt project with a simple Gold model that builds metrics on top of Silver.",
+      "Airflow DAG that orchestrates generation, Bronze load, Spark Silver transform, and dbt Gold build."
+    ],
+    "challenges": [
+      "Coordinating container networking between Spark, Airflow, and the batch Postgres instance.",
+      "Keeping job logic small and readable while still reflecting realistic transformations.",
+      "Designing the folder and service layout so the project remains approachable for learners."
+    ],
+    "outcomeDetails": [
+      "Demonstrates a full medallion pipeline from raw file to analytics-ready table on a laptop.",
+      "Highlights how Spark and dbt can complement each other in the same workflow.",
+      "Provides a concrete example of using Airflow to orchestrate a layered warehouse design."
+    ],
+    "artifacts": [
+      {
+        "title": "Medallion Layer Diagram",
+        "type": "image",
+        "src": "",
+        "caption": "Bronze, Silver, and Gold layers connected by Spark, dbt, and Airflow."
+      }
+    ]
+  },
+  {
+    "id": "realtime-risk",
+    "title": "Real-Time Risk Streaming Pipeline",
+    "tagline": "Kafka and Flink streaming pipeline that lands risk events into Postgres for real-time analytics.",
+    "problem": "There was no simple way to demonstrate continuous event processing from a Kafka topic into a queryable store on a local machine.",
+    "impact": "Provided a clear, reproducible example of real-time ingestion and processing that complements the batch medallion pipeline.",
+    "category": "streaming",
+    "roleType": "Solo",
+    "roleDetail": "Implemented the Kafka stack, Python producer and consumer, Flink job, and real-time Postgres landing design.",
+    "team": "Independent portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "Kafka",
+      "Flink",
+      "Python",
+      "Postgres",
+      "Docker"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/realtime-risk"
+    },
+    "featured": true,
+    "contextGoal": "Show how a simple streaming pipeline reads events from Kafka, processes them with Flink, and persists them in a landing table.",
+    "architecture": {
+      "diagram": "",
+      "note": "Kafka and Zookeeper stack with a risk_events topic, Python producer and consumer, Flink job that reads from Kafka and writes to a rt_risk_events landing table in Postgres."
+    },
+    "whatIBuilt": [
+      "Docker Compose stack for Zookeeper and Kafka tailored to local development.",
+      "Python producer that sends example risk events to the risk_events topic.",
+      "Python consumer that subscribes to the same topic and prints events for debugging.",
+      "Docker Compose stack for Flink and real-time Postgres with appropriate ports and env files.",
+      "PyFlink job that reads events from Kafka and writes parsed rows into a rt_risk_events landing table."
+    ],
+    "challenges": [
+      "Configuring Kafka so local Python clients and containerised services can both connect reliably.",
+      "Ensuring the Flink job uses container hostnames instead of localhost when running inside the network.",
+      "Managing separate compose files and environment variables for Kafka and Flink while keeping commands simple."
+    ],
+    "outcomeDetails": [
+      "Demonstrates real-time event flow from producer to Kafka to Flink to Postgres on a laptop.",
+      "Pairs naturally with the batch project to show both streaming and batch capabilities in one portfolio.",
+      "Provides a concrete foundation for future reconciliation and monitoring jobs."
+    ],
+    "artifacts": [
+      {
+        "title": "Streaming Flow Diagram",
+        "type": "image",
+        "src": "",
+        "caption": "Producer sends risk events to Kafka, Flink consumes and writes into Postgres."
+      }
+    ]
+  },
+  {
+    "id": "retail-demand-revenue-intelligence",
+    "title": "Retail Demand and Revenue Intelligence",
+    "tagline": "Batch retail data pipeline that turns raw orders into clear demand and revenue insight across products, stores, and time.",
+    "problem": "Retail data often lands as small but messy tables across orders, items, products, and stores, making it hard to see reliable demand and revenue patterns.",
+    "impact": "Provides a clean, repeatable view of daily demand and revenue by product, store, and category, forming a solid base for stock, pricing, and performance decisions.",
+    "category": "pipelines",
+    "roleType": "Solo",
+    "roleDetail": "Designed and implemented the end-to-end batch analytics and forecasting pipeline as a portfolio project.",
+    "team": "Individual portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "Python",
+      "SQL",
+      "Pandas",
+      "Scikit-learn",
+      "Postgres",
+      "Spark",
+      "dbt",
+      "Airflow",
+      "Docker",
+      "Power BI"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/retail-demand"
+    },
+    "featured": true,
+    "contextGoal": "Move from raw retail tables to a clean, tested, and explainable batch pipeline that supports demand and revenue analysis for non-technical stakeholders.",
+    "architecture": {
+      "diagram": "",
+      "note": "Raw CSVs are ingested with Python into Postgres, cleaned and aggregated with Spark, modeled with dbt into gold marts, and surfaced via a simple ML baseline and BI dashboards."
+    },
+    "whatIBuilt": [
+      "Sample retail schema with orders, order items, products, and stores for realistic structure.",
+      "Python ingestion script that loads raw CSVs into Postgres as raw tables.",
+      "Spark batch jobs that clean data and build silver and gold layers for daily sales.",
+      "dbt models that formalise marts for demand and revenue by day, store, and product category.",
+      "A simple Scikit-learn baseline model that forecasts short-term demand from the gold tables.",
+      "Guidance for connecting Power BI or Tableau directly to the mart tables for dashboards."
+    ],
+    "challenges": [
+      "Designing a schema that feels realistic but stays small enough for a portfolio demo.",
+      "Keeping the batch flow readable for beginners while still showing medallion-style layers.",
+      "Balancing ML complexity with the goal of a transparent, explainable baseline forecast."
+    ],
+    "outcomeDetails": [
+      "Produces a gold-level daily sales table plus clean product and store dimensions ready for BI.",
+      "Demonstrates how Python, Spark, dbt, and Scikit-learn can work together in a single batch pipeline.",
+      "Shows end-to-end thinking from ingestion through modeling, forecasting, and visualisation for retail data."
+    ],
+    "artifacts": [
+      {
+        "title": "Batch Pipeline Diagram",
+        "type": "image",
+        "src": "",
+        "caption": "High-level view from raw CSVs to gold marts and dashboards."
+      },
+      {
+        "title": "Retail Dashboard Mock",
+        "type": "image",
+        "src": "",
+        "caption": "Example revenue and demand views by product and store."
+      }
+    ]
+  },
+  {
+    "id": "realtime-fraud-risk-signal-pipeline",
+    "title": "Real-Time Fraud and Risk Signal Pipeline",
+    "tagline": "Streaming-style fraud and risk simulation that turns synthetic events into rolling user features and simple risk signals.",
+    "problem": "Fraud and risk teams struggle to build and test live-style pipelines when they only have static data and no safe place to experiment.",
+    "impact": "Provides a local, replayable environment to explore rolling features, event windows, and nightly retraining loops for risk scoring.",
+    "category": "orchestration",
+    "roleType": "Solo",
+    "roleDetail": "Designed and implemented the streaming-style simulation, feature pipeline, and nightly training scaffold as a portfolio project.",
+    "team": "Individual portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "Python",
+      "SQL",
+      "Pandas",
+      "Scikit-learn",
+      "Spark Structured Streaming",
+      "Postgres",
+      "dbt",
+      "Airflow",
+      "Docker"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/realtime-fraud"
+    },
+    "featured": true,
+    "contextGoal": "Simulate a real-time fraud monitoring flow where synthetic transaction events are turned into five-minute rolling features and simple risk marts for monitoring and modelling.",
+    "architecture": {
+      "diagram": "",
+      "note": "A Python event generator drops JSON transactions into a stream inbox; Spark Structured Streaming reads them into bronze and silver tables, builds rolling user features, stores them in Postgres, and dbt creates marts for risk monitoring and nightly ML training."
+    },
+    "whatIBuilt": [
+      "Synthetic transaction event generator that writes realistic JSON batches into a stream inbox folder.",
+      "Spark Structured Streaming job that ingests events into bronze and silver layers in Postgres.",
+      "Five-minute rolling feature tables per user, including transaction counts and average amounts.",
+      "dbt models that turn raw and feature tables into risk monitoring marts for analysts.",
+      "A Scikit-learn baseline training script that reads recent data and produces a simple model report.",
+      "Airflow DAG scaffolding for nightly feature backfill, training, and report generation."
+    ],
+    "challenges": [
+      "Designing a streaming-style pipeline that can run entirely on a local laptop without Kafka.",
+      "Keeping the structured streaming job simple enough for beginners but still realistic.",
+      "Connecting streaming features, dbt marts, and nightly ML training into one coherent story."
+    ],
+    "outcomeDetails": [
+      "Demonstrates how event-style data can be turned into near real-time features for fraud and risk monitoring.",
+      "Shows integration of Spark Structured Streaming, Postgres, dbt, and Scikit-learn in a single project.",
+      "Provides a safe sandbox for explaining rolling windows, user-level features, and nightly model retraining."
+    ],
+    "artifacts": [
+      {
+        "title": "Streaming Topology Sketch",
+        "type": "image",
+        "src": "",
+        "caption": "Logical flow from event generator through streaming jobs to feature marts."
+      },
+      {
+        "title": "Risk Monitoring Mart Snapshot",
+        "type": "image",
+        "src": "",
+        "caption": "Example aggregated metrics by country, merchant, and time window."
+      }
+    ]
+  },
+  {
+    "id": "modern-analytics-engineering-showcase",
+    "title": "Modern Analytics Engineering Showcase",
+    "tagline": "Focused analytics engineering project that turns raw tables into clean, tested, and well-documented marts with dbt.",
+    "problem": "Teams often have raw data and dashboards but lack a clear, documented semantic layer between them.",
+    "impact": "Provides a small, opinionated dbt project that demonstrates layered models, tests, and documentation for sales, marketing, and support data.",
+    "category": "analytics",
+    "roleType": "Solo",
+    "roleDetail": "Owned the ingestion pattern, dbt model design, and documentation as a focused analytics engineering portfolio project.",
+    "team": "Individual portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "SQL",
+      "dbt",
+      "Python",
+      "Pandas",
+      "Postgres",
+      "Docker",
+      "Airflow",
+      "Power BI"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/analytics-engineering"
+    },
+    "featured": true,
+    "contextGoal": "Show how dbt and SQL can create a clean semantic layer that supports sales, marketing, and support analysis with tests and documentation.",
+    "architecture": {
+      "diagram": "",
+      "note": "Raw CSVs are loaded into Postgres with Python, then dbt builds layered models (staging, intermediate, marts) that power BI dashboards and self-service queries."
+    },
+    "whatIBuilt": [
+      "Compact sample datasets for sales, marketing campaigns, and support tickets.",
+      "Python and Pandas ingestion script that lands raw tables in Postgres.",
+      "dbt staging models that clean and standardise column names, types, and basic rules.",
+      "Intermediate dbt models that join domains to answer cross-functional questions.",
+      "Mart models that expose ready-to-use tables for sales trends, marketing efficiency, and support outcomes.",
+      "Basic tests and documentation inside dbt so analysts can trust and understand each model."
+    ],
+    "challenges": [
+      "Designing simple but realistic schemas for three different business domains.",
+      "Keeping model layers small while still showing the value of staging, intermediate, and marts.",
+      "Writing documentation that helps non-technical stakeholders understand what each table means."
+    ],
+    "outcomeDetails": [
+      "Shows a full analytics engineering pattern with dbt, from raw tables to documented marts.",
+      "Demonstrates how a semantic layer can support BI tools and self-service SQL safely.",
+      "Acts as a clean, teachable reference for talking about dbt, tests, and documentation in interviews."
+    ],
+    "artifacts": [
+      {
+        "title": "dbt Model DAG Screenshot",
+        "type": "image",
+        "src": "",
+        "caption": "Graph of staging, intermediate, and mart models for the project."
+      },
+      {
+        "title": "BI Mock Dashboard",
+        "type": "image",
+        "src": "",
+        "caption": "Example combined view of sales, marketing, and support metrics."
+      }
+    ]
+  }
+]

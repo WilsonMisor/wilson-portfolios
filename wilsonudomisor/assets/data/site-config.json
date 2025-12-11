@@ -1,0 +1,21 @@
+{
+  "owner": {
+    "name": "Wilson Sunday Udomisor",
+    "title": "Data Engineer and Data Scientist turning messy data into trusted decisions and clear insights",
+    "proofLine": "I build reliable end-to-end data systems that move from raw ingestion to analytics-ready insights. My work spans both data engineering and data science, combining robust batch and real-time pipelines with practical machine learning and business intelligence."
+  },
+  "links": {
+    "github": "https://github.com/WilsonMisor",
+    "githubDE": "https://github.com/WilsonMisor/Data-Engineering",
+    "githubDS": "https://github.com/WilsonMisor/Data-Science",
+    "linkedin": "https://www.linkedin.com/in/wilsonudomisor",
+    "email": "wilsonudomisor@gmail.com",
+    "tiktok": "https://www.tiktok.com/@wizbourne?_r=1&_t=ZS-927Kqt39BaS",
+    "youtube": "https://www.youtube.com/@wilsonjunior3196"
+  },
+  "images": {
+    "homeHeroPhoto": "assets/img/wilson1.jpg",
+    "aboutHeroPhoto": "assets/img/wilson2.jpg",
+    "headshot": "assets/img/wilson1.jpg"
+  }
+}

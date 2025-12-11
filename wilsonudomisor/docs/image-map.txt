@@ -1,0 +1,129 @@
+==============================================
+WILSON SUNDAY UDOMISOR - PORTFOLIO IMAGE MAP
+==============================================
+
+This document maps all images used across the combined portfolio website.
+When you want to update a profile photo, replace the image file AND verify
+all references below are correct for GitHub Pages deployment.
+
+==============================================
+IMAGE FILE: /wilsonudomisor/assets/img/wilson1.jpg
+==============================================
+
+Primary headshot/profile image.
+
+Used in:
+  1. /wilsonudomisor/index.html
+     - Line ~52: hero section background-image (inline style)
+     - Purpose: Main hero profile photo on landing page
+
+  2. /wilsonudomisor/assets/data/site-config.json
+     - Field: "images.homeHeroPhoto"
+     - Field: "images.headshot"
+     - Purpose: Configuration reference for JavaScript rendering
+
+How to update:
+  1. Replace the file: /wilsonudomisor/assets/img/wilson1.jpg
+  2. Ensure the new image is named exactly "wilson1.jpg"
+  3. Recommended dimensions: 800x800px minimum, square or portrait orientation
+  4. Format: JPG or PNG
+  5. After committing to GitHub, GitHub Pages will automatically use the new image
+
+==============================================
+IMAGE FILE: /wilsonudomisor/assets/img/wilson2.jpg
+==============================================
+
+Secondary headshot/profile image (about page hero).
+
+Used in:
+  1. /wilsonudomisor/about.html
+     - Line ~30: about page hero section background-image (inline style)
+     - Purpose: Hero banner image on About page
+
+  2. /wilsonudomisor/assets/data/site-config.json
+     - Field: "images.aboutHeroPhoto"
+     - Purpose: Configuration reference for JavaScript rendering
+
+How to update:
+  1. Replace the file: /wilsonudomisor/assets/img/wilson2.jpg
+  2. Ensure the new image is named exactly "wilson2.jpg"
+  3. Recommended dimensions: 1200x600px minimum, landscape or square orientation
+  4. Format: JPG or PNG
+  5. After committing to GitHub, GitHub Pages will automatically use the new image
+
+==============================================
+PROJECT IMAGES (Currently Placeholders)
+==============================================
+
+All project pages currently use placeholder divs for diagrams and artifacts.
+These can be replaced with actual images by:
+
+1. Adding image files to: /wilsonudomisor/assets/img/projects/
+2. Updating the projects.json file:
+   - Edit: /wilsonudomisor/assets/data/projects.json
+   - Find the relevant project object
+   - Update the "architecture.diagram" field with the path
+   - Update the "artifacts" array with image paths
+
+Example structure for project images:
+  /wilsonudomisor/assets/img/projects/platform-architecture.png
+  /wilsonudomisor/assets/img/projects/medallion-diagram.png
+  /wilsonudomisor/assets/img/projects/streaming-flow.png
+  etc.
+
+==============================================
+COMPLETE FILE LIST
+==============================================
+
+Current images in the repository:
+  1. /wilsonudomisor/assets/img/wilson1.jpg (Primary headshot)
+  2. /wilsonudomisor/assets/img/wilson2.jpg (Secondary headshot)
+
+Placeholder locations for future project images:
+  - /wilsonudomisor/assets/img/projects/ (create this folder for project visuals)
+
+==============================================
+IMPORTANT NOTES FOR GITHUB PAGES
+==============================================
+
+1. All image paths in HTML files are RELATIVE to the page location
+   - index.html uses: assets/img/wilson1.jpg
+   - project pages use: ../assets/img/wilson1.jpg
+
+2. Image paths in JSON config are relative to the site root
+   - site-config.json uses: assets/img/wilson1.jpg
+
+3. After pushing changes to GitHub:
+   - GitHub Pages will rebuild the site automatically
+   - New images will appear within 1-2 minutes
+   - Hard refresh your browser (Ctrl+F5 or Cmd+Shift+R) to see changes
+
+4. Image files MUST be committed to the repository
+   - Images stored in browser localStorage (from old edit mode) will NOT persist
+   - Only files in the repo will appear on GitHub Pages
+
+5. Supported formats: JPG, PNG, GIF, SVG, WebP
+
+==============================================
+QUICK UPDATE CHECKLIST
+==============================================
+
+To update your profile photo:
+  [ ] 1. Prepare new image file (wilson1.jpg or wilson2.jpg)
+  [ ] 2. Replace the file in /wilsonudomisor/assets/img/
+  [ ] 3. Commit changes to git
+  [ ] 4. Push to GitHub
+  [ ] 5. Wait 1-2 minutes for GitHub Pages rebuild
+  [ ] 6. Hard refresh browser to see new image
+
+To add project diagrams:
+  [ ] 1. Create folder: /wilsonudomisor/assets/img/projects/
+  [ ] 2. Add your diagram images to this folder
+  [ ] 3. Edit /wilsonudomisor/assets/data/projects.json
+  [ ] 4. Update "architecture.diagram" paths for each project
+  [ ] 5. Update "artifacts" array with image paths and captions
+  [ ] 6. Commit and push to GitHub
+
+==============================================
+END OF IMAGE MAP
+==============================================

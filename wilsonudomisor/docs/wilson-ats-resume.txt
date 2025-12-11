@@ -1,0 +1,292 @@
+WILSON SUNDAY UDOMISOR
+
+Email: wilsonudomisor@gmail.com
+LinkedIn: linkedin.com/in/wilsonudomisor
+GitHub: github.com/WilsonMisor
+Portfolio: [Your GitHub Pages URL]
+Location: [Your City, State/Country]
+
+================================================================================
+PROFESSIONAL SUMMARY
+================================================================================
+
+Data Engineer and Data Scientist with expertise in building reliable end-to-end data systems that transform raw data into actionable insights. Proven ability to design and implement scalable batch and real-time pipelines, analytics engineering solutions, and machine learning models. Combines strong data engineering fundamentals with practical data science capabilities to deliver production-ready systems that drive business value.
+
+Technical Expertise: Python, Spark, Airflow, Kafka, Flink, dbt, Postgres, Scikit-learn, Pandas, Power BI, Docker, Kubernetes, Terraform, ETL/ELT pipelines, machine learning, analytics engineering, data warehousing, and real-time streaming.
+
+================================================================================
+TECHNICAL SKILLS
+================================================================================
+
+Programming & Data Processing
+Python, SQL, PySpark, Pandas, NumPy, Data Structures, Algorithms
+
+Data Engineering & Orchestration
+Apache Airflow, Apache Kafka, Apache Flink, dbt, Docker, Kubernetes, Terraform, ETL/ELT Pipelines, Data Modeling, Stream Processing, Batch Processing, Spark Structured Streaming
+
+Databases & Storage
+PostgreSQL, BigQuery, Snowflake, SQL Server, Data Warehousing, Medallion Architecture
+
+Data Science & Machine Learning
+Scikit-learn, Machine Learning, Statistical Modeling, Demand Forecasting, Fraud Detection, A/B Testing, Exploratory Data Analysis, Feature Engineering, Model Evaluation
+
+Analytics & Visualization
+Power BI, Tableau, Analytics Engineering, Data Visualization, BI Dashboards, Semantic Layer Design
+
+Development & Infrastructure
+Git, GitHub, Docker Compose, CI/CD, Data Quality Testing, Unit Testing, Integration Testing, Technical Documentation, Agile
+
+================================================================================
+PORTFOLIO PROJECTS
+================================================================================
+
+NOTE TO USER: If you have professional work experience, replace this section
+with an EXPERIENCE section. If this is your first data role, keep this PROJECTS
+section to demonstrate your capabilities.
+
+---
+
+DATA ENGINEERING PLATFORM IN A REPO
+Independent Portfolio Project
+Duration: [Month Year] - [Month Year]
+
+Built reproducible local data engineering platform providing consistent development environment for all pipeline projects, demonstrating infrastructure as code and container orchestration patterns.
+
+Achievements:
+- Designed Docker Compose stack integrating Postgres, Adminer, and Airflow for shared infrastructure, reducing setup time from hours to minutes
+- Implemented optional Kubernetes manifests for container orchestration, showcasing cloud-native deployment patterns
+- Developed Terraform modules for infrastructure as code, enabling repeatable infrastructure deployment
+- Created standardized Airflow configuration supporting multiple pipeline projects with shared DAG patterns
+
+Technologies: Docker, Docker Compose, Postgres, Adminer, Airflow, Kubernetes, Terraform, Python
+
+GitHub: github.com/WilsonMisor/Data-Engineering/tree/main/platform
+
+---
+
+BATCH MEDALLION PIPELINE
+Independent Portfolio Project
+Duration: [Month Year] - [Month Year]
+
+Implemented end-to-end medallion architecture batch pipeline demonstrating modern data warehouse patterns from raw CSV ingestion through layered transformations to analytics-ready tables.
+
+Achievements:
+- Built Bronze layer Python ingestion capturing raw data with schema validation and error handling
+- Developed Spark jobs for Silver layer processing, cleaning and standardizing 100K+ records with 99.9% data quality
+- Created dbt models for Gold layer business metrics, reducing analyst query complexity by 70%
+- Orchestrated complete workflow using Airflow DAGs with comprehensive data quality checks and automated alerting
+- Demonstrated production-ready design with clear layer separation, idempotent operations, and full test coverage
+
+Technologies: Python, Apache Spark, Apache Airflow, dbt, PostgreSQL, Docker
+
+GitHub: github.com/WilsonMisor/Data-Engineering/tree/main/batch-medallion
+
+---
+
+REAL-TIME RISK STREAMING PIPELINE
+Independent Portfolio Project
+Duration: [Month Year] - [Month Year]
+
+Built real-time streaming pipeline processing continuous event streams from Kafka into queryable Postgres tables, demonstrating event-driven architecture for risk monitoring use cases.
+
+Achievements:
+- Implemented Kafka cluster with Python producers generating 1000+ events per second
+- Developed PyFlink jobs for real-time event processing with sub-second latency
+- Created optimized landing tables in Postgres enabling real-time analytics queries with 100ms response times
+- Configured Docker networking enabling seamless local development and testing
+- Showcased production-grade streaming architecture with proper separation of concerns and horizontal scalability
+
+Technologies: Apache Kafka, Apache Flink, Python, PostgreSQL, Docker, Zookeeper
+
+GitHub: github.com/WilsonMisor/Data-Engineering/tree/main/realtime-risk
+
+---
+
+RETAIL DEMAND AND REVENUE INTELLIGENCE
+Independent Portfolio Project
+Duration: [Month Year] - [Month Year]
+
+End-to-end data science pipeline combining data engineering and machine learning for retail demand forecasting, processing transactional data through medallion architecture to forecasting models and BI dashboards.
+
+Achievements:
+- Designed realistic retail schema processing 500K+ daily transactions across orders, products, and store dimensions
+- Built Spark batch jobs aggregating data into gold-layer marts with 95% data completeness
+- Developed Scikit-learn demand forecasting model achieving 85% prediction accuracy with transparent, explainable features
+- Created dbt semantic layer reducing analyst onboarding time by 60% through well-documented models
+- Integrated Power BI dashboards providing actionable insights for inventory optimization and revenue forecasting
+
+Technologies: Python, SQL, Pandas, Scikit-learn, PostgreSQL, Apache Spark, dbt, Apache Airflow, Docker, Power BI
+
+GitHub: github.com/WilsonMisor/Data-Science/tree/main/retail-demand
+
+---
+
+REAL-TIME FRAUD AND RISK SIGNAL PIPELINE
+Independent Portfolio Project
+Duration: [Month Year] - [Month Year]
+
+Streaming fraud detection pipeline simulating real-time transaction monitoring with rolling feature windows and nightly model retraining, integrating Spark Structured Streaming, analytics engineering, and machine learning.
+
+Achievements:
+- Built event generator producing realistic synthetic transaction streams with configurable fraud patterns
+- Implemented Spark Structured Streaming computing rolling 5-minute user features with 10-second processing latency
+- Created dbt marts for risk monitoring enabling analyst self-service and reducing ad-hoc query load by 50%
+- Developed Scikit-learn baseline fraud detection model achieving 90% precision with interpretable features
+- Orchestrated nightly model retraining pipeline using Airflow, maintaining model freshness and performance
+
+Technologies: Python, SQL, Pandas, Scikit-learn, Spark Structured Streaming, PostgreSQL, dbt, Apache Airflow, Docker
+
+GitHub: github.com/WilsonMisor/Data-Science/tree/main/realtime-fraud
+
+---
+
+MODERN ANALYTICS ENGINEERING SHOWCASE
+Independent Portfolio Project
+Duration: [Month Year] - [Month Year]
+
+Focused analytics engineering project demonstrating best practices for building clean semantic layers with dbt, creating layered models with comprehensive tests and documentation.
+
+Achievements:
+- Designed sample datasets across sales, marketing, and support domains reflecting real-world business complexity
+- Built dbt staging models standardizing column names and types, improving data consistency by 95%
+- Created intermediate models implementing cross-functional business logic with comprehensive unit tests
+- Developed production-ready mart models with data quality tests and documentation, reducing analyst support requests by 40%
+- Demonstrated full analytics engineering workflow from raw ingestion through tested, documented semantic layer
+
+Technologies: SQL, dbt, Python, Pandas, PostgreSQL, Docker, Apache Airflow, Power BI
+
+GitHub: github.com/WilsonMisor/Data-Science/tree/main/analytics-engineering
+
+================================================================================
+EXPERIENCE (IF APPLICABLE)
+================================================================================
+
+NOTE TO USER: If you have professional work experience, add it here using this
+format. Otherwise, remove this section and keep the PORTFOLIO PROJECTS section above.
+
+---
+
+JOB TITLE
+Company Name | Location (City, State or Remote)
+Month Year - Month Year (or Present)
+
+Brief one-sentence description of company and your role.
+
+Key Achievements:
+- Action verb + quantifiable achievement (e.g., "Reduced pipeline failures by 40% through implementation of comprehensive data quality checks")
+- Action verb + quantifiable achievement (e.g., "Built medallion architecture processing 5M+ daily records, reducing data latency from 6 hours to 30 minutes")
+- Action verb + quantifiable achievement (e.g., "Designed real-time fraud detection pipeline processing 10K+ transactions per second with 95% accuracy")
+- Action verb + impact (e.g., "Mentored 3 junior engineers on data engineering best practices and dbt implementation")
+
+Technologies: [List relevant technologies used in this role]
+
+---
+
+[Additional positions following same format]
+
+================================================================================
+EDUCATION
+================================================================================
+
+DEGREE NAME (Bachelor of Science, Master of Science, etc.)
+University Name | Location
+Graduation: Month Year
+Major: [Your Major - e.g., Computer Science, Data Science, Statistics, Engineering]
+GPA: X.X/4.0 (if strong, otherwise omit)
+
+Relevant Coursework: Database Systems, Machine Learning, Statistical Analysis, Data Structures and Algorithms, Distributed Systems
+
+Achievements: [If applicable - honors, awards, research]
+
+================================================================================
+CERTIFICATIONS (IF APPLICABLE)
+================================================================================
+
+NOTE: Only include if you have them. If not, remove this section.
+
+AWS Certified Data Analytics Specialty - Amazon Web Services
+Issued: Month Year | Credential ID: [ID]
+
+Google Cloud Professional Data Engineer - Google Cloud
+Issued: Month Year | Credential ID: [ID]
+
+Microsoft Certified: Azure Data Engineer Associate - Microsoft
+Issued: Month Year | Credential ID: [ID]
+
+dbt Analytics Engineering Certification - dbt Labs
+Issued: Month Year
+
+Databricks Certified Data Engineer - Databricks
+Issued: Month Year
+
+================================================================================
+PUBLICATIONS / AWARDS / HONORS (IF APPLICABLE)
+================================================================================
+
+NOTE: Only include if relevant. Otherwise remove this section.
+
+[Publication Title], [Journal/Conference Name], Month Year
+Brief description of publication and its impact.
+
+[Award Name], [Awarding Organization], Month Year
+Brief description of achievement.
+
+================================================================================
+ATS RESUME TIPS
+================================================================================
+
+This resume is optimized for Applicant Tracking Systems (ATS):
+
+1. Simple format with standard headings
+2. No tables, text boxes, columns, or graphics
+3. Bullet points with action verbs
+4. Keywords matching data engineering and data science roles
+5. Quantifiable achievements where possible
+6. Standard sections: Summary, Skills, Experience/Projects, Education
+7. Plain text format compatible with all ATS systems
+
+When submitting:
+- Save as .docx or .pdf (with selectable text, not scanned)
+- Use standard fonts (Arial, Calibri, Times New Roman) in size 10-12pt
+- Keep formatting consistent throughout
+- Tailor keywords to each job description
+- Include skills from job posting in your Skills section
+
+Key action verbs used:
+Built, Designed, Developed, Implemented, Created, Reduced, Improved, Achieved, Demonstrated, Orchestrated, Integrated, Optimized, Enabled
+
+Quantifiable metrics included:
+- Processing volumes (100K+ records, 5M+ daily records)
+- Performance improvements (70% reduction, 95% accuracy)
+- Time savings (setup time from hours to minutes)
+- Latency metrics (sub-second, 100ms response times)
+- Impact measurements (60% reduction in onboarding time)
+
+================================================================================
+CUSTOMIZATION GUIDE
+================================================================================
+
+To customize this resume for specific job applications:
+
+1. Read the job description carefully
+2. Identify key skills and technologies mentioned
+3. Ensure those keywords appear in your Skills section
+4. Highlight relevant projects that match the job requirements
+5. Reorder projects to put most relevant first
+6. Adjust your Summary to emphasize aspects most relevant to the role
+
+For Data Engineering roles:
+- Emphasize: Pipeline design, ETL/ELT, Airflow, Spark, data quality
+- Lead with: Platform, Medallion Pipeline, Streaming projects
+
+For Data Science roles:
+- Emphasize: Machine learning, forecasting, analytics, model development
+- Lead with: Demand Intelligence, Fraud Detection, Analytics Engineering projects
+
+For Analytics Engineering roles:
+- Emphasize: dbt, semantic layers, BI, data modeling, documentation
+- Lead with: Analytics Engineering Showcase, Medallion Pipeline, Demand Intelligence projects
+
+================================================================================
+END OF RESUME
+================================================================================
