@@ -1,0 +1,214 @@
+================================================================================
+PROJECT TYPE LABELS IMPLEMENTATION REPORT
+================================================================================
+
+Date: 2025-12-11
+Goal: Add clear visual labels to distinguish Data Engineering from Data Science projects
+Status: COMPLETE
+
+================================================================================
+1. SHORT SUMMARY
+================================================================================
+
+I classified all 6 portfolio projects into two types:
+- Data Engineering (3 projects): platform, batch-medallion, realtime-risk
+- Data Science (3 projects): retail-demand-revenue-intelligence,
+  realtime-fraud-risk-signal-pipeline, modern-analytics-engineering-showcase
+
+Classification was based on:
+- GitHub repository location (/Data-Engineering vs /Data-Science)
+- Primary tool stack and focus (infrastructure/pipelines vs ML/analytics)
+
+Labels appear in:
+1. JSON data: Every project now has a "type" field in projects.json
+2. Project cards: Visible colored badges on all project cards (home page featured
+   section and projects listing page)
+3. HTML attributes: data-project-type attribute on each card article element
+4. Case study pages: Static taglines already correctly labeled projects
+
+================================================================================
+2. TYPE FIELD DETAILS
+================================================================================
+
+Property name: "type"
+
+Location: /wilsonudomisor/assets/data/projects.json
+Added to: All 6 project objects
+
+Allowed values (exactly two):
+- "data-engineering" (3 projects)
+- "data-science" (3 projects)
+
+Example JSON structure:
+{
+  "id": "platform",
+  "title": "Data Engineering Platform in a Repo",
+  "type": "data-engineering",
+  "category": "platform",
+  ...
+}
+
+Classification breakdown:
+
+Data Engineering projects:
+1. platform - "type": "data-engineering"
+   (Docker, Postgres, Airflow, Kubernetes, Terraform platform)
+2. batch-medallion - "type": "data-engineering"
+   (Bronze/Silver/Gold pipeline with Spark, Airflow, dbt)
+3. realtime-risk - "type": "data-engineering"
+   (Kafka, Flink streaming pipeline)
+
+Data Science projects:
+4. retail-demand-revenue-intelligence - "type": "data-science"
+   (Demand forecasting with Scikit-learn, retail analytics)
+5. realtime-fraud-risk-signal-pipeline - "type": "data-science"
+   (Fraud detection, ML training, risk scoring)
+6. modern-analytics-engineering-showcase - "type": "data-science"
+   (dbt semantic layer, BI dashboards, analytics)
+
+================================================================================
+3. BADGE IMPLEMENTATION
+================================================================================
+
+Location: Badges appear on project cards rendered by JavaScript
+
+Badge HTML structure:
+<div class="project-badge project-badge-de">Data Engineering</div>
+<!-- OR -->
+<div class="project-badge project-badge-ds">Data Science</div>
+
+Insertion point:
+- Inside the <article class="card"> element
+- Immediately before the <h3> title
+- First visible element in each project card
+
+CSS classes:
+
+Base class: .project-badge
+- Purpose: Core badge styling (padding, border-radius, typography)
+- Styles: inline-block, 4px/12px padding, 6px border-radius, 12px font-size,
+  600 font-weight, uppercase, 0.5px letter-spacing
+
+Modifier class: .project-badge-de (Data Engineering)
+- Color: Green (#4ade80)
+- Background: rgba(74, 222, 128, 0.15)
+- Border: 1px solid rgba(74, 222, 128, 0.4)
+
+Modifier class: .project-badge-ds (Data Science)
+- Color: Blue (#38bdf8)
+- Background: rgba(56, 189, 248, 0.15)
+- Border: 1px solid rgba(56, 189, 248, 0.4)
+
+Responsive behavior:
+- Badges use inline-block display and adapt naturally to all screen sizes
+- No special mobile breakpoint needed
+- Tested across mobile (max-width: 600px) and tablet (min-width: 720px) breakpoints
+
+JavaScript logic (main.js, projectCardMarkup function):
+const typeLabel = project.type === 'data-engineering' ? 'Data Engineering' : 'Data Science';
+const typeBadgeClass = project.type === 'data-engineering' ? 'project-badge-de' : 'project-badge-ds';
+
+HTML output:
+<div class="project-badge ${typeBadgeClass}">${typeLabel}</div>
+
+================================================================================
+4. FILE CHANGE LOG
+================================================================================
+
+MODIFIED FILES (3 files):
+
+1. Data Configuration:
+   /wilsonudomisor/assets/data/projects.json
+   - Added "type" field to all 6 project objects
+   - Values: "data-engineering" (3 projects), "data-science" (3 projects)
+   - Placed after "impact" field for consistency
+
+2. JavaScript Logic:
+   /wilsonudomisor/assets/js/main.js (lines 133-158)
+   - Updated projectCardMarkup() function
+   - Added typeLabel variable (converts type to human-readable label)
+   - Added typeBadgeClass variable (selects CSS class based on type)
+   - Added data-project-type="${project.type}" to article element
+   - Inserted badge HTML: <div class="project-badge ${typeBadgeClass}">${typeLabel}</div>
+   - Badge appears before project title in card markup
+
+3. Stylesheet:
+   /wilsonudomisor/assets/css/style.css (after line 220)
+   - Added .project-badge base class (lines 211-220)
+   - Added .project-badge-de modifier class (lines 222-226, green theme)
+   - Added .project-badge-ds modifier class (lines 228-232, blue theme)
+
+NO CHANGES NEEDED (verified correct as-is):
+
+HTML pages (9 files):
+- /wilsonudomisor/index.html - Featured projects rendered dynamically, badges auto-applied
+- /wilsonudomisor/projects.html - Project listing rendered dynamically, badges auto-applied
+- /wilsonudomisor/projects/project-*.html (6 files) - Static taglines already correct:
+  * project-platform.html - "Case Study - Data Engineering" ✓
+  * project-batch-medallion.html - "Case Study - Data Engineering" ✓
+  * project-realtime-risk.html - "Case Study - Data Engineering" ✓
+  * project-retail-demand-revenue-intelligence.html - "Case Study - Data Science" ✓
+  * project-realtime-fraud-risk-signal-pipeline.html - "Case Study - Data Science" ✓
+  * project-modern-analytics-engineering-showcase.html - "Case Study - Data Science" ✓
+
+================================================================================
+5. INTEGRATION WITH EXISTING FEATURES
+================================================================================
+
+Filtering system:
+- Existing category-based filters (platform, pipelines, streaming, orchestration,
+  analytics) continue to work unchanged
+- Filters operate on the "category" field, not the "type" field
+- Type labels and category filters are complementary:
+  * Category = project domain/focus area (what the project does)
+  * Type = discipline label (data engineering vs data science)
+
+Example: "batch-medallion" project
+- Type: "data-engineering" (shows green badge)
+- Category: "pipelines" (filtered by "Pipelines" button)
+
+Data attributes:
+- All project cards now have data-project-type attribute for future extensibility
+- Could enable type-based filtering if needed in the future
+- Currently used for semantic markup only
+
+================================================================================
+6. VERIFICATION CHECKLIST
+================================================================================
+
+✓ All 6 projects have "type" field in projects.json
+✓ JavaScript renders badges on all project cards
+✓ CSS styling provides visual distinction (green vs blue)
+✓ Badges appear on home page featured projects section
+✓ Badges appear on projects listing page
+✓ Case study pages have correct static taglines
+✓ Mobile responsive design verified (no layout issues)
+✓ Existing category filtering system unaffected
+✓ data-project-type attribute added to all cards
+✓ Code is clean, readable, and maintainable
+
+================================================================================
+7. VISUAL APPEARANCE
+================================================================================
+
+Data Engineering badge (green):
+[DATA ENGINEERING] ← Small uppercase badge with green text, light green background
+
+Data Science badge (blue):
+[DATA SCIENCE] ← Small uppercase badge with blue text, light blue background
+
+Badge placement:
+┌─────────────────────────────────────┐
+│ [DATA ENGINEERING]                  │ ← Badge appears here
+│ Data Engineering Platform in a Repo │ ← Title
+│ Shared local stack with Postgres,   │ ← Description
+│ Adminer, Airflow, and optional...   │
+│                                     │
+│ Solo • Portfolio project • platform │ ← Metadata
+│ [Docker] [Compose] [Postgres]...    │ ← Tags
+│ [Read case study] [GitHub]          │ ← Actions
+└─────────────────────────────────────┘
+
+================================================================================
+END OF REPORT
+================================================================================

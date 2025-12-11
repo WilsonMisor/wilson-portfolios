@@ -200,11 +200,35 @@ header {
   border-radius: var(--radius);
   padding: var(--space-4);
   box-shadow: var(--shadow);
+  position: relative;
 }
 
 .card h3 {
   margin: 0 0 var(--space-2);
   font-size: 20px;
+}
+
+.project-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-2);
+}
+
+.project-badge-de {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+}
+
+.project-badge-ds {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
 }
 
 .meta {

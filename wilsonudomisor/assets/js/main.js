@@ -134,8 +134,11 @@ function projectCardMarkup(project, featured = false) {
   const caseStudyLink = `projects/project-${project.id}.html`;
   const tagline = featured ? project.problem : project.tagline;
   const impactLine = featured ? project.impact : project.roleDetail;
+  const typeLabel = project.type === 'data-engineering' ? 'Data Engineering' : 'Data Science';
+  const typeBadgeClass = project.type === 'data-engineering' ? 'project-badge-de' : 'project-badge-ds';
   return `
-    <article class="card" data-category="${project.category}">
+    <article class="card" data-category="${project.category}" data-project-type="${project.type}">
+      <div class="project-badge ${typeBadgeClass}">${typeLabel}</div>
       <h3>${project.title}</h3>
       <p>${tagline}</p>
       <p class="impact-line">${impactLine}</p>
