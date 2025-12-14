@@ -202,6 +202,25 @@ function artifactMarkup(artifact, title, projectId, index) {
     `;
   }
 
+  if (artifact.type === "video" && artifact.videoId) {
+    return `
+      <div class="artifact">
+        <div class="meta">${artifact.title}</div>
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/${artifact.videoId}"
+            title="${artifact.title} - ${title}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="helper">${artifact.caption}</p>
+      </div>
+    `;
+  }
+
   return "";
 }
 

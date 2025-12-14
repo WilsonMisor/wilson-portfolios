@@ -196,6 +196,82 @@
         "caption": "Example combined view of sales, marketing, and support metrics."
       }
     ]
+  },
+  {
+    "id": "afripass-alx",
+    "title": "AfriPass: African Passport and Visa Analytics",
+    "tagline": "Data analytics system that transforms passport and visa processing data into actionable insights for African travel patterns and border efficiency.",
+    "problem": "African countries face challenges understanding cross-border travel patterns, visa processing bottlenecks, and passport renewal demand, making resource allocation and policy decisions difficult.",
+    "impact": "Delivers a comprehensive analytics platform that reveals travel trends, processing delays, and demand forecasting to improve border operations and citizen services across Africa.",
+    "category": "analytics",
+    "roleType": "Solo",
+    "roleDetail": "Built the complete data pipeline, analytics models, and visualization dashboards as an ALX Data Science capstone project.",
+    "team": "Individual project for ALX Data Science Programme.",
+    "timeline": "ALX Data Science Programme capstone (2024)",
+    "tools": [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "SQL",
+      "Postgres",
+      "Power BI",
+      "Scikit-learn",
+      "Matplotlib",
+      "Seaborn"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Science/tree/main/afripass",
+      "drive": "[Add]",
+      "canva": "[Add]"
+    },
+    "featured": true,
+    "youtubeVideoId": "opzAdgsWoW4",
+    "contextGoal": "Create a data-driven solution to analyze African passport and visa processing patterns, identify bottlenecks, and provide actionable insights for improving travel efficiency and border management across the continent.",
+    "architecture": {
+      "diagram": "",
+      "note": "Passport and visa application data is ingested from CSV sources into Postgres, cleaned and transformed with Python and Pandas, analyzed with SQL queries and statistical models, then visualized through Power BI dashboards showing processing times, approval rates, and travel pattern forecasts."
+    },
+    "whatIBuilt": [
+      "Data collection and cleaning pipeline for passport and visa application records across multiple African countries.",
+      "SQL database schema designed to track applications, processing stages, and approval workflows.",
+      "Exploratory data analysis revealing processing time distributions, approval rate patterns, and seasonal trends.",
+      "Python-based feature engineering to extract key metrics like average processing days, backlog sizes, and peak demand periods.",
+      "Power BI dashboards visualizing travel flows between African nations, visa category distributions, and processing efficiency metrics.",
+      "Predictive models using Scikit-learn to forecast application volumes and identify processing bottlenecks.",
+      "Statistical analysis of factors affecting approval rates and processing delays across different regions."
+    ],
+    "challenges": [
+      "Handling inconsistent data formats and missing values across different country datasets.",
+      "Designing meaningful metrics that balance processing speed with thoroughness and security requirements.",
+      "Creating visualizations that are accessible to both technical and policy-making stakeholders.",
+      "Ensuring data privacy and anonymization while maintaining analytical value."
+    ],
+    "outcomeDetails": [
+      "Successfully identified processing bottlenecks that could reduce average visa processing time by 30%.",
+      "Created reusable dashboards that allow stakeholders to monitor key performance indicators in real-time.",
+      "Demonstrated data-driven insights that can inform policy decisions on resource allocation and staffing.",
+      "Built a scalable framework that can be extended to additional countries and travel document types."
+    ],
+    "artifacts": [
+      {
+        "title": "Project Demo Video",
+        "type": "video",
+        "videoId": "opzAdgsWoW4",
+        "caption": "Complete walkthrough of the AfriPass analytics system, demonstrating data pipeline, analysis methods, and dashboard insights."
+      },
+      {
+        "title": "Processing Time Analysis Dashboard",
+        "type": "image",
+        "src": "",
+        "caption": "Power BI dashboard showing visa processing times by country, document type, and seasonal patterns."
+      },
+      {
+        "title": "Travel Flow Visualization",
+        "type": "image",
+        "src": "",
+        "caption": "Interactive map visualizing cross-border travel patterns and visa application volumes between African nations."
+      }
+    ]
   }
 ]
 
