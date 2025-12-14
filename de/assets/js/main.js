@@ -112,6 +112,25 @@ function renderSingleProject(projects) {
   fillList("challengesList", project.challenges);
   fillList("outcomeList", project.outcomeDetails);
 
+  const snapshotSection = document.querySelector(".project-snapshot");
+  if (project.youtubeVideoId && snapshotSection) {
+    const videoSection = document.createElement("section");
+    videoSection.className = "section";
+    const videoTitle = project.title ? `${project.title} demo video` : "Project demo video";
+    videoSection.innerHTML = `
+      <h2>Demo video</h2>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/${project.youtubeVideoId}"
+          title="${videoTitle}"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+    `;
+    snapshotSection.insertAdjacentElement("afterend", videoSection);
+  }
+
   const archBox = document.getElementById("architectureBox");
   if (archBox) {
     const archSection = archBox.querySelector("h3") ? archBox.querySelector("h3").parentElement : archBox;

@@ -167,5 +167,68 @@
         "caption": "Producer sends risk events to Kafka, Flink consumes and writes into Postgres."
       }
     ]
+  },
+  {
+    "id": "mindcare",
+    "title": "MindCare Telehealth Data Platform",
+    "tagline": "Mental health intake-to-outcome pipeline with quality checks, modeling, and dashboards for counselors and program leads.",
+    "problem": "Session notes, assessments, and follow-ups were scattered across files, making it hard to monitor patient progress or program impact.",
+    "impact": "Unified data lets counselors track adherence and escalation risk, while leadership sees cohort outcomes and throughput in real time.",
+    "category": "pipelines",
+    "roleType": "Solo",
+    "roleDetail": "Designed ingestion, quality rules, transformations, and reporting for the ALX MindCare data engineering capstone.",
+    "team": "Independent ALX portfolio project.",
+    "timeline": "ALX Data Engineering capstone",
+    "tools": [
+      "Python",
+      "Airflow",
+      "dbt",
+      "Postgres",
+      "Docker",
+      "Power BI"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/mindcare",
+      "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "youtubeVideoId": "MAi7VeTSG9U",
+    "contextGoal": "Provide a governed data backbone for MindCare so counselors, QA, and leadership share the same view of patient journeys.",
+    "architecture": {
+      "diagram": "",
+      "note": "Airflow orchestrates Python ingestion into landing tables, dbt models curate session facts and patient dimensions, and Power BI dashboards report adherence and escalation risk."
+    },
+    "whatIBuilt": [
+      "Airflow DAGs that pull source files, validate schema, and load raw MindCare interactions into Postgres landing tables.",
+      "dbt models that standardize patients, sessions, assessments, and outcomes into dimensional tables.",
+      "Data quality checks for duplicates, freshness, and referential integrity before publishing curated models.",
+      "Derived metrics for attendance, escalation risk flags, and counselor throughput.",
+      "Power BI dashboards with cohort trends, adherence rates, and risk monitoring."
+    ],
+    "challenges": [
+      "Normalizing semi-structured assessments while preserving context for downstream analytics.",
+      "Keeping QA checks lightweight enough for local runs but representative of production expectations.",
+      "Coordinating Airflow scheduling with data refresh SLAs for dashboards."
+    ],
+    "outcomeDetails": [
+      "Counselors see the latest attendance and risk flags in one place instead of juggling spreadsheets.",
+      "Leadership can monitor program throughput and escalation patterns to adjust staffing.",
+      "Data pipeline is reproducible locally with Docker for demos and iteration."
+    ],
+    "artifacts": [
+      {
+        "title": "MindCare Flow",
+        "type": "image",
+        "src": "",
+        "caption": "From source drops to curated session and patient models powering dashboards."
+      },
+      {
+        "title": "Dashboard Walkthrough",
+        "type": "link",
+        "url": "https://www.canva.com",
+        "caption": "Slides highlighting adherence, risk flags, and cohort trends."
+      }
+    ]
   }
 ]

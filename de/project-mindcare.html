@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-project-id="mindcare">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MindCare telehealth data platform case study - ingestion, quality checks, dbt models, and dashboards for mental health programs.">
+  <title>MindCare Telehealth Data Platform | Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-site="de">
+  <div class="page" data-project-id="mindcare">
+    <header>
+      <div class="container nav">
+        <div class="nav-logo">WU / Data</div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section">
+        <p class="tagline">Case Study</p>
+        <h1 id="projectTitle">MindCare Telehealth Data Platform</h1>
+        <p class="helper-line" id="contextGoal">Provide a governed data backbone for MindCare so counselors, QA, and leadership share the same view of patient journeys.</p>
+      </section>
+
+      <section class="section project-snapshot">
+        <div>
+          <h2>Snapshot</h2>
+          <div class="snapshot-grid">
+            <div class="small-card">
+              <strong>Problem</strong>
+              <p id="snapshotProblem">Session notes, assessments, and follow-ups were scattered across files, making it hard to monitor patient progress or program impact.</p>
+            </div>
+            <div class="small-card">
+              <strong>Your role</strong>
+              <p id="snapshotRole">Solo ƒ?" Designed ingestion, quality rules, transformations, and reporting for the ALX MindCare data engineering capstone.</p>
+            </div>
+            <div class="small-card">
+              <strong>Stack</strong>
+              <p id="snapshotStack">Python, Airflow, dbt, Postgres, Docker, Power BI</p>
+            </div>
+            <div class="small-card">
+              <strong>Timeline</strong>
+              <p id="snapshotTimeline">ALX Data Engineering capstone</p>
+            </div>
+          </div>
+          <div class="card" style="margin-top: var(--space-3);">
+            <div class="card-actions">
+              <a id="linkGithub" data-edit-link-key="project_mindcare_github" class="btn primary" href="https://github.com/WilsonMisor/Data-Engineering/tree/main/mindcare" target="_blank" rel="noopener">GitHub</a>
+              <a id="linkDrive" data-edit-link-key="project_mindcare_drive" class="btn secondary" href="https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing" target="_blank" rel="noopener">Drive</a>
+              <a id="linkCanva" data-edit-link-key="project_mindcare_canva" class="btn" href="https://www.canva.com" target="_blank" rel="noopener">Canva</a>
+            </div>
+          </div>
+        </div>
+        <div id="architectureBox" class="card">
+          <h3>Architecture / flow</h3>
+          <div class="artifact-placeholder editable-image" data-edit-image-key="project_mindcare_architecture" style="min-height:240px;">Architecture diagram</div>
+          <p class="helper">Airflow orchestrates Python ingestion into landing tables, dbt models curate session facts and patient dimensions, and Power BI dashboards report adherence and escalation risk.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Context & goal</h2>
+        <p id="contextGoalBody">Provide a governed data backbone for MindCare so counselors, QA, and leadership share the same view of patient journeys.</p>
+      </section>
+
+      <section class="section">
+        <h2>What I built</h2>
+        <ul class="list" id="whatBuiltList">
+          <li>Airflow DAGs that pull source files, validate schema, and load raw MindCare interactions into Postgres landing tables.</li>
+          <li>dbt models that standardize patients, sessions, assessments, and outcomes into dimensional tables.</li>
+          <li>Data quality checks for duplicates, freshness, and referential integrity before publishing curated models.</li>
+          <li>Derived metrics for attendance, escalation risk flags, and counselor throughput.</li>
+          <li>Power BI dashboards with cohort trends, adherence rates, and risk monitoring.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Challenges & trade-offs</h2>
+        <ul class="list" id="challengesList">
+          <li>Normalizing semi-structured assessments while preserving context for downstream analytics.</li>
+          <li>Keeping QA checks lightweight enough for local runs but representative of production expectations.</li>
+          <li>Coordinating Airflow scheduling with data refresh SLAs for dashboards.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Outcome</h2>
+        <ul class="list" id="outcomeList">
+          <li>Counselors see the latest attendance and risk flags in one place instead of juggling spreadsheets.</li>
+          <li>Leadership can monitor program throughput and escalation patterns to adjust staffing.</li>
+          <li>Data pipeline is reproducible locally with Docker for demos and iteration.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Artifacts gallery</h2>
+        <div class="gallery" id="artifactsGallery">
+          <div class="artifact">
+            <div class="meta">MindCare Flow</div>
+            <div class="artifact-placeholder editable-image" data-edit-image-key="project_mindcare_artifact_0" style="min-height:240px;">Image placeholder</div>
+            <p class="helper">From source drops to curated session and patient models powering dashboards.</p>
+          </div>
+          <div class="artifact">
+            <div class="meta">Dashboard Walkthrough</div>
+            <p class="helper">Slides highlighting adherence, risk flags, and cohort trends.</p>
+            <a class="btn secondary" data-edit-link-key="project_mindcare_artifact_1" href="https://www.canva.com" target="_blank" rel="noopener">Open artifact</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="pagination">
+          <a class="btn secondary" href="project-realtime-risk.html">Previous project</a>
+          <a class="btn secondary" href="projects.html">Next project</a>
+          <a class="btn primary" href="projects.html">Back to all projects</a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="container footer-top">
+        <div>
+          <h3>Contact</h3>
+          <p class="helper">Reach out for data engineering engagements or collaborations.</p>
+          <div class="contact-buttons">
+            <a class="btn primary" data-edit-link-key="links.whatsappNumber" data-whatsapp-link href="https://wa.me/2348037945101" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn secondary" data-link-path="links.email" data-mailto="true" data-edit-link-key="links.email" href="mailto:wilsonudomisor@gmail.com">Email</a>
+            <a class="btn" data-link-path="links.linkedin" data-edit-link-key="links.linkedin" href="https://www.linkedin.com/in/wilsonudomisor" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <button id="editToggle" class="btn edit-toggle" type="button">Edit</button>
+        </div>
+        <p class="helper">Ac 2025 Wilson Udomisor. Crafted for clarity and reliability.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
