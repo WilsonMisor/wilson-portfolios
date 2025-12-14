@@ -222,14 +222,15 @@
     "links": {
       "github": "https://github.com/WilsonMisor/Data-Science/tree/main/afripass",
       "drive": "[Add]",
-      "canva": "[Add]"
+      "canva": "https://drive.google.com/file/d/1fNyqwLeuCH1QP5Kb_gLn2eQl4m7wk389/view?usp=drive_link"
     },
     "featured": true,
-    "youtubeVideoId": "opzAdgsWoW4",
     "contextGoal": "Create a data-driven solution to analyze African passport and visa processing patterns, identify bottlenecks, and provide actionable insights for improving travel efficiency and border management across the continent.",
     "architecture": {
       "diagram": "",
-      "note": "Passport and visa application data is ingested from CSV sources into Postgres, cleaned and transformed with Python and Pandas, analyzed with SQL queries and statistical models, then visualized through Power BI dashboards showing processing times, approval rates, and travel pattern forecasts."
+      "videoId": "opzAdgsWoW4",
+      "videoTitle": "Project Demo Video",
+      "note": "Complete walkthrough of the AfriPass analytics system, demonstrating data pipeline, analysis methods, and dashboard insights."
     },
     "whatIBuilt": [
       "Data collection and cleaning pipeline for passport and visa application records across multiple African countries.",
@@ -253,12 +254,6 @@
       "Built a scalable framework that can be extended to additional countries and travel document types."
     ],
     "artifacts": [
-      {
-        "title": "Project Demo Video",
-        "type": "video",
-        "videoId": "opzAdgsWoW4",
-        "caption": "Complete walkthrough of the AfriPass analytics system, demonstrating data pipeline, analysis methods, and dashboard insights."
-      },
       {
         "title": "Processing Time Analysis Dashboard",
         "type": "image",

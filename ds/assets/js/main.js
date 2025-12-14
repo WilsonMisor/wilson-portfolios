@@ -128,10 +128,31 @@ function renderSingleProject(projects) {
 
   const archBox = document.getElementById("architectureBox");
   if (archBox) {
-    if (project.architecture && project.architecture.diagram) {
-      archBox.innerHTML = `<img src="${project.architecture.diagram}" alt="Architecture diagram for ${project.title}">`;
+    if (project.architecture && project.architecture.videoId) {
+      const videoTitle = project.architecture.videoTitle || "Project Demo Video";
+      archBox.innerHTML = `
+        <h3>${videoTitle}</h3>
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/${project.architecture.videoId}"
+            title="${videoTitle} - ${project.title}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      `;
+    } else if (project.architecture && project.architecture.diagram) {
+      archBox.innerHTML = `
+        <h3>Architecture / flow</h3>
+        <img src="${project.architecture.diagram}" alt="Architecture diagram for ${project.title}">
+      `;
     } else {
-      archBox.innerHTML = `<div class="diagram-placeholder editable-image" data-edit-image-key="project_${project.id}_architecture">Architecture diagram placeholder</div>`;
+      archBox.innerHTML = `
+        <h3>Architecture / flow</h3>
+        <div class="diagram-placeholder editable-image" data-edit-image-key="project_${project.id}_architecture">Architecture diagram placeholder</div>
+      `;
     }
     if (project.architecture && project.architecture.note) {
       const note = document.createElement("p");
