@@ -160,6 +160,7 @@
       "Provides a concrete foundation for future reconciliation and monitoring jobs."
     ],
     "artifacts": [
+
       {
         "title": "Streaming Flow Diagram",
         "type": "image",
@@ -190,7 +191,7 @@
     "links": {
       "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/mindcare",
       "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
-      "canva": "https://www.canva.com"
+      "canva": ".../assets/docs/Mindcare Slide Deck.pdf"
     },
     "featured": true,
     "youtubeVideoId": "MAi7VeTSG9U",
