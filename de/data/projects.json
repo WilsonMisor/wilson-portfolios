@@ -23,7 +23,7 @@
     "links": {
       "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/platform",
       "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
-      "canva": "www.canva.com"
+      "canva": "https://www.canva.com"
     },
     "featured": true,
     "contextGoal": "Provide a simple, repeatable local platform that all batch and real time pipelines can share.",
@@ -160,7 +160,6 @@
       "Provides a concrete foundation for future reconciliation and monitoring jobs."
     ],
     "artifacts": [
-
       {
         "title": "Streaming Flow Diagram",
         "type": "image",
@@ -233,5 +232,3 @@
     ]
   }
 ]
-
-
