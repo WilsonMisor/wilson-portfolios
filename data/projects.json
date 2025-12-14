@@ -1,0 +1,234 @@
+[
+  {
+    "id": "platform",
+    "title": "Data Engineering Platform in a Repo",
+    "tagline": "Shared local stack with Postgres, Adminer, Airflow, and optional Kubernetes and Terraform to support all portfolio pipelines.",
+    "problem": "Each pipeline needed a consistent, reproducible environment for databases, orchestration, and tooling on a single laptop.",
+    "impact": "Simplified local setup, reduced configuration drift, and made it easy to spin up the same baseline stack for every project.",
+    "category": "platform",
+    "roleType": "Solo",
+    "roleDetail": "Designed and implemented the local data platform, compose files, and optional Kubernetes and Terraform scaffolds.",
+    "team": "Independent portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "Docker",
+      "Docker Compose",
+      "Postgres",
+      "Adminer",
+      "Airflow",
+      "Kubernetes",
+      "Terraform",
+      "Python"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/platform",
+      "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "contextGoal": "Provide a simple, repeatable local platform that all batch and real time pipelines can share.",
+    "architecture": {
+      "diagram": "",
+      "note": "Docker Compose base for Postgres and Adminer, extended with Airflow, plus optional Kubernetes manifests and Terraform modules."
+    },
+    "whatIBuilt": [
+      "Docker Compose stack with Postgres and Adminer for shared local storage and SQL inspection.",
+      "Airflow extension compose file with metadata database, webserver, scheduler, and init container.",
+      "Standardised airflow folder for DAGs, logs, and plugins that other projects can reuse.",
+      "Optional Kubernetes manifests for Postgres and Adminer using a dedicated namespace.",
+      "Optional Terraform scaffold with a reusable module and local environment configuration."
+    ],
+    "challenges": [
+      "Keeping the stack simple enough for beginners while still reflecting real platform patterns.",
+      "Avoiding port conflicts across multiple projects running on the same laptop.",
+      "Designing a structure that batch and streaming projects can reuse without tight coupling."
+    ],
+    "outcomeDetails": [
+      "Any pipeline in the portfolio can be started against a consistent local platform.",
+      "Onboarding to the portfolio is easier because developers start from the same base commands.",
+      "The project doubles as a teaching aid for how platform components fit together."
+    ],
+    "artifacts": [
+      {
+        "title": "Platform Compose Layout",
+        "type": "image",
+        "src": "",
+        "caption": "High level view of Postgres, Adminer, and Airflow in the local stack."
+      }
+    ]
+  },
+  {
+    "id": "batch-medallion",
+    "title": "Batch Medallion Pipeline",
+    "tagline": "End to end Bronze, Silver, Gold batch pipeline using Spark, Airflow, dbt, and Postgres.",
+    "problem": "Raw data needed a clear path from messy CSV input to analytics ready tables without manual, one off scripts.",
+    "impact": "Turned raw files into layered warehouse tables with predictable structure so analytics and reporting can trust the data.",
+    "category": "pipelines",
+    "roleType": "Solo",
+    "roleDetail": "Designed and built the medallion pipeline, including data generation, Spark transforms, dbt models, and Airflow orchestration.",
+    "team": "Independent portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "Python",
+      "Spark",
+      "Airflow",
+      "dbt",
+      "Postgres",
+      "Docker"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/batch-medallion",
+      "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "contextGoal": "Show how a small but realistic batch pipeline implements the medallion pattern with clear responsibilities at each layer.",
+    "architecture": {
+      "diagram": "",
+      "note": "CSV generator writes raw files, Python loads Bronze tables in Postgres, Spark cleans to Silver, dbt models build Gold, all orchestrated by an Airflow DAG."
+    },
+    "whatIBuilt": [
+      "Python script that generates synthetic CSV data resembling transactional events.",
+      "Bronze loader script that ingests the CSV into a Bronze schema table in Postgres.",
+      "Spark job that reads Bronze over JDBC, cleans and standardises data, and writes to Silver tables.",
+      "dbt project with a simple Gold model that builds metrics on top of Silver.",
+      "Airflow DAG that orchestrates generation, Bronze load, Spark Silver transform, and dbt Gold build."
+    ],
+    "challenges": [
+      "Coordinating container networking between Spark, Airflow, and the batch Postgres instance.",
+      "Keeping job logic small and readable while still reflecting realistic transformations.",
+      "Designing the folder and service layout so the project remains approachable for learners."
+    ],
+    "outcomeDetails": [
+      "Demonstrates a full medallion pipeline from raw file to analytics ready table on a laptop.",
+      "Highlights how Spark and dbt can complement each other in the same workflow.",
+      "Provides a concrete example of using Airflow to orchestrate a layered warehouse design."
+    ],
+    "artifacts": [
+      {
+        "title": "Medallion Layer Diagram",
+        "type": "image",
+        "src": "",
+        "caption": "Bronze, Silver, and Gold layers connected by Spark, dbt, and Airflow."
+      }
+    ]
+  },
+  {
+    "id": "realtime-risk",
+    "title": "Realtime Risk Streaming Pipeline",
+    "tagline": "Kafka and Flink streaming pipeline that lands risk events into Postgres for realtime analytics.",
+    "problem": "There was no simple way to demonstrate continuous event processing from a Kafka topic into a queryable store on a local machine.",
+    "impact": "Provided a clear, reproducible example of realtime ingestion and processing that complements the batch medallion pipeline.",
+    "category": "streaming",
+    "roleType": "Solo",
+    "roleDetail": "Implemented the Kafka stack, Python producer and consumer, Flink job, and realtime Postgres landing design.",
+    "team": "Independent portfolio project.",
+    "timeline": "Portfolio project",
+    "tools": [
+      "Kafka",
+      "Flink",
+      "Python",
+      "Postgres",
+      "Docker"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/realtime-risk",
+      "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
+      "canva": "https://www.canva.com"
+    },
+    "featured": true,
+    "contextGoal": "Show how a simple streaming pipeline reads events from Kafka, processes them with Flink, and persists them in a landing table.",
+    "architecture": {
+      "diagram": "",
+      "note": "Kafka and Zookeeper stack with a risk_events topic, Python producer and consumer, Flink job that reads from Kafka and writes to a rt_risk_events landing table in Postgres."
+    },
+    "whatIBuilt": [
+      "Docker Compose stack for Zookeeper and Kafka tailored to local development.",
+      "Python producer that sends example risk events to the risk_events topic.",
+      "Python consumer that subscribes to the same topic and prints events for debugging.",
+      "Docker Compose stack for Flink and realtime Postgres with appropriate ports and env files.",
+      "PyFlink job that reads events from Kafka and writes parsed rows into a rt_risk_events landing table."
+    ],
+    "challenges": [
+      "Configuring Kafka so local Python clients and containerised services can both connect reliably.",
+      "Ensuring the Flink job uses container hostnames instead of localhost when running inside the network.",
+      "Managing separate compose files and environment variables for Kafka and Flink while keeping commands simple."
+    ],
+    "outcomeDetails": [
+      "Demonstrates realtime event flow from producer to Kafka to Flink to Postgres on a laptop.",
+      "Pairs naturally with the batch project to show both streaming and batch capabilities in one portfolio.",
+      "Provides a concrete foundation for future reconciliation and monitoring jobs."
+    ],
+    "artifacts": [
+      {
+        "title": "Streaming Flow Diagram",
+        "type": "image",
+        "src": "",
+        "caption": "Producer sends risk events to Kafka, Flink consumes and writes into Postgres."
+      }
+    ]
+  },
+  {
+    "id": "mindcare",
+    "title": "MindCare Telehealth Data Platform",
+    "tagline": "Mental health intake-to-outcome pipeline with quality checks, modeling, and dashboards for counselors and program leads.",
+    "problem": "Session notes, assessments, and follow-ups were scattered across files, making it hard to monitor patient progress or program impact.",
+    "impact": "Unified data lets counselors track adherence and escalation risk, while leadership sees cohort outcomes and throughput in real time.",
+    "category": "pipelines",
+    "roleType": "Solo",
+    "roleDetail": "Designed ingestion, quality rules, transformations, and reporting for the ALX MindCare data engineering capstone.",
+    "team": "Independent ALX portfolio project.",
+    "timeline": "ALX Data Engineering capstone",
+    "tools": [
+      "Python",
+      "Airflow",
+      "dbt",
+      "Postgres",
+      "Docker",
+      "Power BI"
+    ],
+    "links": {
+      "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/mindcare",
+      "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
+      "canva": "assets/docs/Mindcare Slide Deck.pdf"
+    },
+    "featured": true,
+    "youtubeVideoId": "MAi7VeTSG9U",
+    "contextGoal": "Provide a governed data backbone for MindCare so counselors, QA, and leadership share the same view of patient journeys.",
+    "architecture": {
+      "diagram": "",
+      "note": "Airflow orchestrates Python ingestion into landing tables, dbt models curate session facts and patient dimensions, and Power BI dashboards report adherence and escalation risk."
+    },
+    "whatIBuilt": [
+      "Airflow DAGs that pull source files, validate schema, and load raw MindCare interactions into Postgres landing tables.",
+      "dbt models that standardize patients, sessions, assessments, and outcomes into dimensional tables.",
+      "Data quality checks for duplicates, freshness, and referential integrity before publishing curated models.",
+      "Derived metrics for attendance, escalation risk flags, and counselor throughput.",
+      "Power BI dashboards with cohort trends, adherence rates, and risk monitoring."
+    ],
+    "challenges": [
+      "Normalizing semi-structured assessments while preserving context for downstream analytics.",
+      "Keeping QA checks lightweight enough for local runs but representative of production expectations.",
+      "Coordinating Airflow scheduling with data refresh SLAs for dashboards."
+    ],
+    "outcomeDetails": [
+      "Counselors see the latest attendance and risk flags in one place instead of juggling spreadsheets.",
+      "Leadership can monitor program throughput and escalation patterns to adjust staffing.",
+      "Data pipeline is reproducible locally with Docker for demos and iteration."
+    ],
+    "artifacts": [
+      {
+        "title": "MindCare Flow",
+        "type": "image",
+        "src": "",
+        "caption": "From source drops to curated session and patient models powering dashboards."
+      },
+      {
+        "title": "Dashboard Walkthrough",
+        "type": "link",
+        "url": "https://www.canva.com",
+        "caption": "Slides highlighting adherence, risk flags, and cohort trends."
+      }
+    ]
+  }
+]

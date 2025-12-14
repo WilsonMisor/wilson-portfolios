@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Streaming pipeline case study - Kafka and Flink realtime event processing with Python producers and Postgres landing tables.">
+  <title>Realtime Risk Streaming Pipeline | Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-site="de">
+  <div class="page" data-project-id="realtime-risk">
+    <header>
+      <div class="container nav">
+        <div class="nav-logo">WU / Data</div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section">
+        <p class="tagline">Case Study</p>
+        <h1 id="projectTitle">Realtime Risk Streaming Pipeline</h1>
+        <p class="helper-line" id="contextGoal">Show how a simple streaming pipeline reads events from Kafka, processes them with Flink, and persists them in a landing table.</p>
+      </section>
+
+      <section class="section project-snapshot">
+        <div>
+          <h2>Snapshot</h2>
+          <div class="snapshot-grid">
+            <div class="small-card">
+              <strong>Problem</strong>
+              <p id="snapshotProblem">There was no simple way to demonstrate continuous event processing from a Kafka topic into a queryable store on a local machine.</p>
+            </div>
+            <div class="small-card">
+              <strong>Your role</strong>
+              <p id="snapshotRole">Solo — Implemented the Kafka stack, Python producer and consumer, Flink job, and realtime Postgres landing design.</p>
+            </div>
+            <div class="small-card">
+              <strong>Stack</strong>
+              <p id="snapshotStack">Kafka, Flink, Python, Postgres, Docker</p>
+            </div>
+            <div class="small-card">
+              <strong>Timeline</strong>
+              <p id="snapshotTimeline">Portfolio project</p>
+            </div>
+          </div>
+          <div class="card" style="margin-top: var(--space-3);">
+            <div class="card-actions">
+              <a id="linkGithub" data-edit-link-key="project_realtime-risk_github" class="btn primary" href="https://github.com/WilsonMisor/Data-Engineering/tree/main/realtime-risk" target="_blank" rel="noopener">GitHub</a>
+              <a id="linkDrive" data-edit-link-key="project_realtime-risk_drive" class="btn secondary" href="https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing" target="_blank" rel="noopener">Drive</a>
+              <a id="linkCanva" data-edit-link-key="project_realtime-risk_canva" class="btn" href="https://www.canva.com" target="_blank" rel="noopener">Canva</a>
+            </div>
+          </div>
+        </div>
+        <div id="architectureBox" class="card">
+          <h3>Architecture / flow</h3>
+          <div class="artifact-placeholder editable-image" data-edit-image-key="project_realtime-risk_architecture" style="min-height:240px;">Architecture diagram</div>
+          <p class="helper">Kafka and Zookeeper stack with a risk_events topic, Python producer and consumer, Flink job that reads from Kafka and writes to a rt_risk_events landing table in Postgres.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Context & goal</h2>
+        <p id="contextGoalBody">Show how a simple streaming pipeline reads events from Kafka, processes them with Flink, and persists them in a landing table.</p>
+      </section>
+
+      <section class="section">
+        <h2>What I built</h2>
+        <ul class="list" id="whatBuiltList">
+          <li>Docker Compose stack for Zookeeper and Kafka tailored to local development.</li>
+          <li>Python producer that sends example risk events to the risk_events topic.</li>
+          <li>Python consumer that subscribes to the same topic and prints events for debugging.</li>
+          <li>Docker Compose stack for Flink and realtime Postgres with appropriate ports and env files.</li>
+          <li>PyFlink job that reads events from Kafka and writes parsed rows into a rt_risk_events landing table.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Challenges & trade-offs</h2>
+        <ul class="list" id="challengesList">
+          <li>Configuring Kafka so local Python clients and containerised services can both connect reliably.</li>
+          <li>Ensuring the Flink job uses container hostnames instead of localhost when running inside the network.</li>
+          <li>Managing separate compose files and environment variables for Kafka and Flink while keeping commands simple.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Outcome</h2>
+        <ul class="list" id="outcomeList">
+          <li>Demonstrates realtime event flow from producer to Kafka to Flink to Postgres on a laptop.</li>
+          <li>Pairs naturally with the batch project to show both streaming and batch capabilities in one portfolio.</li>
+          <li>Provides a concrete foundation for future reconciliation and monitoring jobs.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Artifacts gallery</h2>
+        <div class="gallery" id="artifactsGallery">
+          <div class="artifact">
+            <div class="meta">Streaming Flow Diagram</div>
+            <div class="artifact-placeholder editable-image" data-edit-image-key="project_realtime-risk_artifact_0" style="min-height:240px;">Image placeholder</div>
+            <p class="helper">Producer sends risk events to Kafka, Flink consumes and writes into Postgres.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="pagination">
+          <a class="btn secondary" href="project-batch-medallion.html">Previous project</a>
+          <a class="btn secondary" href="project-platform.html">Next project</a>
+          <a class="btn primary" href="projects.html">Back to all projects</a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="container footer-top">
+        <div>
+          <h3>Contact</h3>
+          <p class="helper">Reach out for data engineering engagements or collaborations.</p>
+          <div class="contact-buttons">
+            <a class="btn primary" data-edit-link-key="links.whatsappNumber" data-whatsapp-link href="https://wa.me/2348037945101" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn secondary" data-link-path="links.email" data-mailto="true" data-edit-link-key="links.email" href="mailto:wilsonudomisor@gmail.com">Email</a>
+            <a class="btn" data-link-path="links.linkedin" data-edit-link-key="links.linkedin" href="https://www.linkedin.com/in/wilsonudomisor" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <button id="editToggle" class="btn edit-toggle" type="button">Edit</button>
+        </div>
+        <p class="helper">© 2025 Wilson Udomisor. Crafted for clarity and reliability.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

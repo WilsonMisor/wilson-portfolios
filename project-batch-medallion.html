@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Batch pipeline case study - Bronze to Silver to Gold medallion architecture using Spark, Airflow, dbt, and Postgres for analytics-ready data.">
+  <title>Batch Medallion Pipeline | Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-site="de">
+  <div class="page" data-project-id="batch-medallion">
+    <header>
+      <div class="container nav">
+        <div class="nav-logo">WU / Data</div>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="section">
+        <p class="tagline">Case Study</p>
+        <h1 id="projectTitle">Batch Medallion Pipeline</h1>
+        <p class="helper-line" id="contextGoal">Show how a small but realistic batch pipeline implements the medallion pattern with clear responsibilities at each layer.</p>
+      </section>
+
+      <section class="section project-snapshot">
+        <div>
+          <h2>Snapshot</h2>
+          <div class="snapshot-grid">
+            <div class="small-card">
+              <strong>Problem</strong>
+              <p id="snapshotProblem">Raw data needed a clear path from messy CSV input to analytics ready tables without manual, one off scripts.</p>
+            </div>
+            <div class="small-card">
+              <strong>Your role</strong>
+              <p id="snapshotRole">Solo — Designed and built the medallion pipeline, including data generation, Spark transforms, dbt models, and Airflow orchestration.</p>
+            </div>
+            <div class="small-card">
+              <strong>Stack</strong>
+              <p id="snapshotStack">Python, Spark, Airflow, dbt, Postgres, Docker</p>
+            </div>
+            <div class="small-card">
+              <strong>Timeline</strong>
+              <p id="snapshotTimeline">Portfolio project</p>
+            </div>
+          </div>
+          <div class="card" style="margin-top: var(--space-3);">
+            <div class="card-actions">
+              <a id="linkGithub" data-edit-link-key="project_batch-medallion_github" class="btn primary" href="https://github.com/WilsonMisor/Data-Engineering/tree/main/batch-medallion" target="_blank" rel="noopener">GitHub</a>
+              <a id="linkDrive" data-edit-link-key="project_batch-medallion_drive" class="btn secondary" href="https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing" target="_blank" rel="noopener">Drive</a>
+              <a id="linkCanva" data-edit-link-key="project_batch-medallion_canva" class="btn" href="https://www.canva.com" target="_blank" rel="noopener">Canva</a>
+            </div>
+          </div>
+        </div>
+        <div id="architectureBox" class="card">
+          <h3>Architecture / flow</h3>
+          <div class="artifact-placeholder editable-image" data-edit-image-key="project_batch-medallion_architecture" style="min-height:240px;">Architecture diagram</div>
+          <p class="helper">CSV generator writes raw files, Python loads Bronze tables in Postgres, Spark cleans to Silver, dbt models build Gold, all orchestrated by an Airflow DAG.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Context & goal</h2>
+        <p id="contextGoalBody">Show how a small but realistic batch pipeline implements the medallion pattern with clear responsibilities at each layer.</p>
+      </section>
+
+      <section class="section">
+        <h2>What I built</h2>
+        <ul class="list" id="whatBuiltList">
+          <li>Python script that generates synthetic CSV data resembling transactional events.</li>
+          <li>Bronze loader script that ingests the CSV into a Bronze schema table in Postgres.</li>
+          <li>Spark job that reads Bronze over JDBC, cleans and standardises data, and writes to Silver tables.</li>
+          <li>dbt project with a simple Gold model that builds metrics on top of Silver.</li>
+          <li>Airflow DAG that orchestrates generation, Bronze load, Spark Silver transform, and dbt Gold build.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Challenges & trade-offs</h2>
+        <ul class="list" id="challengesList">
+          <li>Coordinating container networking between Spark, Airflow, and the batch Postgres instance.</li>
+          <li>Keeping job logic small and readable while still reflecting realistic transformations.</li>
+          <li>Designing the folder and service layout so the project remains approachable for learners.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Outcome</h2>
+        <ul class="list" id="outcomeList">
+          <li>Demonstrates a full medallion pipeline from raw file to analytics ready table on a laptop.</li>
+          <li>Highlights how Spark and dbt can complement each other in the same workflow.</li>
+          <li>Provides a concrete example of using Airflow to orchestrate a layered warehouse design.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Artifacts gallery</h2>
+        <div class="gallery" id="artifactsGallery">
+          <div class="artifact">
+            <div class="meta">Medallion Layer Diagram</div>
+            <div class="artifact-placeholder editable-image" data-edit-image-key="project_batch-medallion_artifact_0" style="min-height:240px;">Image placeholder</div>
+            <p class="helper">Bronze, Silver, and Gold layers connected by Spark, dbt, and Airflow.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="pagination">
+          <a class="btn secondary" href="project-platform.html">Previous project</a>
+          <a class="btn secondary" href="project-realtime-risk.html">Next project</a>
+          <a class="btn primary" href="projects.html">Back to all projects</a>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="container footer-top">
+        <div>
+          <h3>Contact</h3>
+          <p class="helper">Reach out for data engineering engagements or collaborations.</p>
+          <div class="contact-buttons">
+            <a class="btn primary" data-edit-link-key="links.whatsappNumber" data-whatsapp-link href="https://wa.me/2348037945101" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn secondary" data-link-path="links.email" data-mailto="true" data-edit-link-key="links.email" href="mailto:wilsonudomisor@gmail.com">Email</a>
+            <a class="btn" data-link-path="links.linkedin" data-edit-link-key="links.linkedin" href="https://www.linkedin.com/in/wilsonudomisor" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <button id="editToggle" class="btn edit-toggle" type="button">Edit</button>
+        </div>
+        <p class="helper">© 2025 Wilson Udomisor. Crafted for clarity and reliability.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
