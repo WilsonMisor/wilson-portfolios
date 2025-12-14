@@ -23,7 +23,7 @@
     "links": {
       "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/platform",
       "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
-      "canva": "https://drive.google.com/file/d/1DtfSnHXRXTHRFTJyse7vAaOpuWMqfeCQ/view?usp=drive_link"
+      "canva": "www.canva.com"
     },
     "featured": true,
     "contextGoal": "Provide a simple, repeatable local platform that all batch and real time pipelines can share.",
@@ -191,7 +191,7 @@
     "links": {
       "github": "https://github.com/WilsonMisor/Data-Engineering/tree/main/mindcare",
       "drive": "https://drive.google.com/drive/folders/1eOsUX5I2ZXL6-Mi_ivvSM61RkXL6P8gu?usp=sharing",
-      "canva": ".../assets/docs/Mindcare Slide Deck.pdf"
+      "canva": "https://drive.google.com/file/d/1DtfSnHXRXTHRFTJyse7vAaOpuWMqfeCQ/view?usp=drive_link"
     },
     "featured": true,
     "youtubeVideoId": "MAi7VeTSG9U",
@@ -233,4 +233,5 @@
     ]
   }
 ]
+
 
