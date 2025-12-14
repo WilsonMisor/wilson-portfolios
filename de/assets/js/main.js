@@ -112,29 +112,28 @@ function renderSingleProject(projects) {
   fillList("challengesList", project.challenges);
   fillList("outcomeList", project.outcomeDetails);
 
-  const snapshotSection = document.querySelector(".project-snapshot");
-  if (project.youtubeVideoId && snapshotSection) {
-    const videoSection = document.createElement("section");
-    videoSection.className = "section";
-    const videoTitle = project.title ? `${project.title} demo video` : "Project demo video";
-    videoSection.innerHTML = `
-      <h2>Demo video</h2>
-      <div class="video-wrap">
+  const archBox = document.getElementById("architectureBox");
+  if (archBox) {
+    const archSection = archBox.querySelector("h3") ? archBox.querySelector("h3").parentElement : archBox;
+
+    // Insert YouTube video if available
+    if (project.youtubeVideoId) {
+      const existingH3 = archSection.querySelector("h3");
+      archSection.innerHTML = existingH3 ? `<h3>Demo Video</h3>` : "";
+      const videoTitle = project.title ? `${project.title} demo video` : "Project demo video";
+      const videoWrap = document.createElement("div");
+      videoWrap.className = "video-wrap";
+      videoWrap.innerHTML = `
         <iframe
           src="https://www.youtube-nocookie.com/embed/${project.youtubeVideoId}"
           title="${videoTitle}"
           loading="lazy"
           allowfullscreen
         ></iframe>
-      </div>
-    `;
-    snapshotSection.insertAdjacentElement("afterend", videoSection);
-  }
-
-  const archBox = document.getElementById("architectureBox");
-  if (archBox) {
-    const archSection = archBox.querySelector("h3") ? archBox.querySelector("h3").parentElement : archBox;
-    if (project.architecture && project.architecture.diagram) {
+      `;
+      archSection.appendChild(videoWrap);
+    } else if (project.architecture && project.architecture.diagram) {
+      // Fallback to architecture diagram if no video
       const existingContent = archSection.querySelector("h3");
       archSection.innerHTML = existingContent ? `<h3>${existingContent.textContent}</h3>` : "";
       const img = document.createElement("img");
@@ -142,6 +141,7 @@ function renderSingleProject(projects) {
       img.alt = `Architecture diagram for ${project.title}`;
       archSection.appendChild(img);
     }
+
     if (project.architecture && project.architecture.note) {
       const note = document.createElement("p");
       note.className = "helper";
