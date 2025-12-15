@@ -16,5 +16,9 @@
     "homeHeroPhoto": "assets/img/user/wilson1.jpeg",
     "aboutHeroPhoto": "assets/img/user/wilson2.jpg",
     "headshot": "assets/img/user/wilson1.jpeg"
+  },
+  "projectsPageVideo": {
+    "youtubeVideoId": "LAU2fEtW6ao",
+    "title": "Elevator Pitch"
   }
 }

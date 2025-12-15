@@ -19,6 +19,7 @@ async function initSite() {
   bindGlobalContent();
   renderFeatured(projectsData);
   renderProjectIndex(projectsData);
+  renderProjectsPageVideo();
   renderSingleProject(projectsData);
 
   initEditMode();
@@ -88,6 +89,31 @@ function renderProjectIndex(projects) {
   });
 
   applyFilter("all");
+}
+
+function renderProjectsPageVideo() {
+  const listEl = document.getElementById("projectsList");
+  if (!listEl || !siteConfig || !siteConfig.projectsPageVideo) return;
+
+  const videoConfig = siteConfig.projectsPageVideo;
+  const firstSection = document.querySelector("main .section");
+  if (!firstSection) return;
+
+  const videoSection = document.createElement("section");
+  videoSection.className = "section";
+  videoSection.innerHTML = `
+    <h2>${videoConfig.title}</h2>
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/${videoConfig.youtubeVideoId}"
+        title="${videoConfig.title}"
+        loading="lazy"
+        allowfullscreen
+      ></iframe>
+    </div>
+  `;
+
+  firstSection.parentNode.insertBefore(videoSection, firstSection);
 }
 
 function renderSingleProject(projects) {
